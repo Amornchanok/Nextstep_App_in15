@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".bottomNavigation.HomeActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/topbar"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:drawableTop="@drawable/icon_mainservice01"
+            android:text="ห้องซ้อมเต้น"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:id="@+id/bt_service1"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corners"
+            android:shadowColor="@color/purple" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:drawableTop="@drawable/icon_mainservice03"
+            android:text="การแข่งขัน"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:id="@+id/bt_service4"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corners"
+            android:shadowColor="@color/purple" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:text="Advertise Contest"
+            android:textSize="17dp"
+            android:textColor="@android:color/black"
+            android:layout_weight="2"
+            android:background="@drawable/banner_1"
+            android:shadowColor="@color/purple" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ห้องซ้อมเต้นแนะนำ"
+            android:textSize="25dp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Recommend list01"
+                android:textSize="17dp"
+                android:textColor="@android:color/black"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:padding="15dp"
+                android:background="@color/gray" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Recommend list02"
+                android:textSize="17dp"
+                android:textColor="@android:color/black"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:padding="15dp"
+                android:background="@color/gray" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="โปรโมชันมาแรง"
+            android:textSize="25dp"
+            android:textColor="@android:color/black">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Promotion list01"
+                android:textSize="17dp"
+                android:textColor="@android:color/black"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:padding="15dp"
+                android:background="@color/gray"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Promotion list02"
+                android:textSize="17dp"
+                android:textColor="@android:color/black"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:padding="15dp"
+                android:background="@color/gray"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottomBar"
+            app:itemBackground="@color/white"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"
+            app:menu="@menu/menu_navigation"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

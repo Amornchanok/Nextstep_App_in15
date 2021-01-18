@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "879933951310",
+    "firebase_url": "https://nextstepapp-740cf.firebaseio.com",
+    "project_id": "nextstepapp-740cf",
+    "storage_bucket": "nextstepapp-740cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879933951310:android:984c4d62ef9fa3f2ea221f",
+        "android_client_info": {
+          "package_name": "com.amornchanok.nextstep_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879933951310-3b2d6orplgkkfv9qb3tj97sfd5sm4vva.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amornchanok.nextstep_app",
+            "certificate_hash": "159a12ad0a1dcfd92ec2bc3b02d104274ca7d3c7"
+          }
+        },
+        {
+          "client_id": "879933951310-kkcbkmn6qbgtncgb187j8gd9jdc6tvgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc9r08sGPWjt-YQKs8463PIbxPe7uUoMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879933951310-kkcbkmn6qbgtncgb187j8gd9jdc6tvgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

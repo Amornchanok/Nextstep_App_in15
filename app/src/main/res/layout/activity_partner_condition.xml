@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".partnerRegister.PartnerConditionActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/topbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
+            android:src="@drawable/img_partner"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="80dp"
+            android:text="สมัครเป็นพาร์ทเนอร์กับเรา"
+            android:textSize="25dp"
+            android:layout_marginTop="-80dp"
+            android:textColor="@color/purple"
+            android:shadowColor="@color/purple" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="เงื่อนไข"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/db_adman_x">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.การสมัครเข้าร่วมเป็นพาร์ทเนอร์ จำเป็นต้องใช้ข้อมูลหลายอย่าง กรุณาเตรียมเอกสารจำเป็น ดังนี้"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/db_adman_x">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.1 รูปถ่ายหน้าตรง สามารถถ่ายจากกล้องโทรศัพท์หรือเลือกรูปภาพได้ โดยรูปภาพจะต้องไม่เกิน 6 เดือน (กรณีเป็นเจ้าของร่วมกันหลายคนใช้ตัวแทน 1 คน)"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/db_adman_x">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.2 ภาพบัตรประชาชน ที่เห็นข้อมูลชัดเจน"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/db_adman_x">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.3 เบอร์โทรศัพท์ที่ต้องใช้ยืนยันตัวตนจาก OTP"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/db_adman_x">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checked_partner"
+            android:buttonTint="@color/purple"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="อ่านและรับทราบเงื่อนไข"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/db_adman_x">
+        </TextView>
+
+        </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="เริ่มการสมัคร"
+                android:textSize="25dp"
+                android:textColor="@android:color/white"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:padding="15dp"
+                android:background="@drawable/gradient_button"
+                android:visibility="invisible"
+                android:id="@+id/bt_pnstart"
+                />
+
+    </LinearLayout>
+
+
+</LinearLayout>

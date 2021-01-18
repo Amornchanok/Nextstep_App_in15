@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Nextstep_App</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="action_geolocate">Pick Place</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="default_info_snippet">No places found, because location permission is disabled.</string>
+
+    <string-array name="gender_array">
+        <item>เพศ</item>
+        <item>หญิง</item>
+        <item>ชาย</item>
+        <item>อื่น ๆ</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title1">ยินดีต้อนรับ</string>
+    <string name="title2">ค้นหาห้องซ้อมเต้น</string>
+    <string name="title3">ค้นหาการแข่งขัน</string>
+
+    <string name="description1">ยินดีต้อนรับเข้าสู่แอปพลิเคชัน NEXTSTEP แอปพลิเคชันค้นหาพื้นที่ให้บริการห้องซ้อมเต้นและกิจกรรมการแข่งขัน</string>
+    <string name="description2">เมื่อเห็นไอคอนนี้ ที่หน้าโฮม กดเลย! NEXTSTEP จะพาคุณไปค้นหาห้องซ้อมเต้นที่ใช่สำหรับคุณ</string>
+    <string name="description3">เมื่อเห็นไอคอนนี้ ที่หน้าโฮม กดเลย! NEXTSTEP จะพาคุณไปค้นหาการแข่งขันที่ใช่สำหรับคุณ</string>
+
+    <string name="next">ต่อไป</string>
+    <string name="back">กลับ</string>
+    <string name="done">เริ่มใช้งาน</string>
+    <string name="skip">ข้าม</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="auth_failed">auth_failed</string>
+
+
+</resources>

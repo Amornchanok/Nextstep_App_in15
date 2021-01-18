@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".introScreen.SecondFragment"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="50dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/intro2"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="40dp">
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/rounded_btnoactive"/>
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/rounded_corners_gradient"/>
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="5dp"
+                android:background="@drawable/rounded_btnoactive"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title2"
+            android:textColor="@color/purple"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description2"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_gravity="bottom|end"
+            android:gravity="bottom|end">
+
+            <TextView
+                android:id="@+id/slideTwoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/back"
+                android:textSize="20dp"
+                android:textColor="@color/purple"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:background="@drawable/rounded_puplestroke"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/slideTwoNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/next"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:background="@drawable/gradient_button"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
