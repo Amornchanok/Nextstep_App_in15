@@ -4,22 +4,22 @@
 
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="หน้าแรก"
         android:icon="@drawable/ic_home"/>
 
     <item
         android:id="@+id/myBooking"
-        android:title="Booking"
+        android:title="การจองของฉัน"
         android:icon="@drawable/ic_booking"/>
 
     <item
         android:id="@+id/noti"
-        android:title="Notification"
+        android:title="แจ้งเตือน"
         android:icon="@drawable/ic_notifications"/>
 
     <item
         android:id="@+id/profile"
-        android:title="Profile"
+        android:title="โปรไฟล์"
         android:icon="@drawable/ic_account"/>
 
 </menu>

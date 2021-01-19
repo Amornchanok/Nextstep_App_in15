@@ -9,7 +9,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 
-import com.amornchanok.nextstep_app.MyApplication;
 import com.amornchanok.nextstep_app.R;
 
 import androidx.annotation.NonNull;

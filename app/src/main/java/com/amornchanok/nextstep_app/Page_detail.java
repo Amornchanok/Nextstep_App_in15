@@ -33,7 +33,6 @@ public class Page_detail extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView);
 
-
         text_name = (TextView) findViewById(R.id.text_name);
         text_key = (TextView) findViewById(R.id.text_key);
         text_url = (TextView) findViewById(R.id.text_url);

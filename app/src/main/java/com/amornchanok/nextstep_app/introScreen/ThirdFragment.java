@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.amornchanok.nextstep_app.HomeActivity;
+import com.amornchanok.nextstep_app.bottomNavigation.HomeActivity;
 import com.amornchanok.nextstep_app.R;
-import com.amornchanok.nextstep_app.searchStudio.SearchRoomActivity;
 
 public class ThirdFragment extends Fragment {
 

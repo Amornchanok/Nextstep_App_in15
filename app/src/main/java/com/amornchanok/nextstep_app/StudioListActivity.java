@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amornchanok.nextstep_app.modelStudioList.Categories;
-import com.amornchanok.nextstep_app.ViewHolder.CategoryViewHolder;
+import com.amornchanok.nextstep_app.firebaseStudio.Studios;
+import com.amornchanok.nextstep_app.ViewHolder.StudioViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -27,36 +27,32 @@ import java.util.ArrayList;
 public class StudioListActivity extends AppCompatActivity {
     //////
     DatabaseReference databaseReference;
-    FirebaseRecyclerOptions<Categories>options;
-    FirebaseRecyclerAdapter<Categories, CategoryViewHolder>adapter;
+    FirebaseRecyclerOptions<Studios>options;
+    FirebaseRecyclerAdapter<Studios, StudioViewHolder>adapter;
     RecyclerView recyclerView;
-    ArrayList<Categories> arrayList;
+    ArrayList<Studios> arrayList;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_studio_list);
 
         arrayList=new ArrayList<>();
-
-        //firebase
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Studios2");
-
-        options = new FirebaseRecyclerOptions.Builder<Categories>().setQuery(databaseReference, Categories.class).build();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Studios");
+        options = new FirebaseRecyclerOptions.Builder<Studios>().setQuery(databaseReference, Studios.class).build();
 
         recyclerView = (RecyclerView) findViewById(R.id.catlist);
         recyclerView.setHasFixedSize(true);
 
-        adapter = new FirebaseRecyclerAdapter<Categories, CategoryViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Studios, StudioViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(CategoryViewHolder holder, final int position, final Categories model) {
+            protected void onBindViewHolder(StudioViewHolder holder, final int position, final Studios model) {
                 holder.stdName.setText(model.getName());
                 holder.stdLocation.setText(model.getLocation());
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(StudioListActivity.this, Page_room_list.class);
-                        // Intent i=new Intent(Categorylist.this,Show_list.class);
-                        i.putExtra("categoryId", model.getID());
+                        Intent i = new Intent(StudioListActivity.this, RoomListActivity.class);
+                        i.putExtra("studioId", model.getID());
                         Toast.makeText(getApplicationContext(), model.getName(), Toast.LENGTH_LONG).show();
                         startActivity(i);
                     }
@@ -79,9 +75,9 @@ public class StudioListActivity extends AppCompatActivity {
 
             @NonNull
             @Override
-            public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.page_studio_item, viewGroup, false);
-                return new CategoryViewHolder(view);
+            public StudioViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_studio, viewGroup, false);
+                return new StudioViewHolder(view);
             }
         };
 
