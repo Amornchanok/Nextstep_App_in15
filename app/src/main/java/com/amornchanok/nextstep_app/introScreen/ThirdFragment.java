@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.amornchanok.nextstep_app.bottomNavigation.HomeActivity;
+import com.amornchanok.nextstep_app.userBottomNavigation.HomeActivity;
 import com.amornchanok.nextstep_app.R;
 
 public class ThirdFragment extends Fragment {

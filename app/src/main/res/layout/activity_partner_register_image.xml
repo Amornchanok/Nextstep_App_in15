@@ -5,45 +5,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".bottomNavigation.HomeActivity">
+    android:orientation="vertical">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/topbar"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-110dp"
-        android:src="@drawable/img_header01"
-        />
+        android:background="@drawable/purple_gradient_bg"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:text="ขั้นตอนที่ 3"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:text="รูปถ่ายเจ้าของกิจการกับสถานประกอบการ"
+            android:textSize="20dp"
+            android:textColor="@color/orange"/>
+
+    </LinearLayout>
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="-100dp"
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/imgPartner"
+            android:background="@drawable/bg_select_photo"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ขั้นตอนที่ 2 รูปถ่ายเจ้าของกิจการกับสถานที่ให้บริการ"
-            android:textSize="17dp"
-            android:textColor="@android:color/white"
-            android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:padding="15dp"
-            android:background="@color/purple"
-            />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:id="@+id/imgPartner"/>
-<!--            android:background="@color/gray"/>-->
+            android:layout_marginTop="-135dp"
+            android:drawableTop="@drawable/ic_outline_photo_camera_10"
+            android:text="เลือกภาพถ่าย หรือ ถ่ายรูป"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/gray"/>
 
     </LinearLayout>
 
@@ -55,35 +84,71 @@
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ขั้นตอนที่ 3 บัตรประจำตัวประชาชน"
-            android:textSize="17dp"
-            android:textColor="@android:color/white"
-            android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:padding="15dp"
-            android:background="@color/purple"
-            />
+            android:background="@drawable/purple_gradient_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:text="ขั้นตอนที่ 4"
+                android:textSize="17dp"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:text="บัตรประชาชนเจ้าของกิจการ"
+                android:textSize="20dp"
+                android:textColor="@color/orange"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:id="@+id/imgIdCard"
-            />
+            android:background="@drawable/bg_select_photo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-135dp"
+            android:drawableTop="@drawable/ic_outline_photo_camera_10"
+            android:text="เลือกภาพถ่าย หรือ ถ่ายรูป"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/gray"/>
+
+        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="ต่อไป"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:background="@drawable/gradient_button"
             android:id="@+id/btImgNext"/>
+
 
     </LinearLayout>
 

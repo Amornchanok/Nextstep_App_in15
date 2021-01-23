@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="556px"
+        android:background="@drawable/header_partner_manage"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="จัดการธุรกิจของคุณได้ง่ายๆที่นี่"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/purple"
+        android:layout_marginBottom="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_bookservice"
+            android:text="ตารางการจอง"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:id="@+id/btBookservice"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corners"
+            android:shadowColor="@color/purple" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_moreoption"
+            android:text="ปรับแต่งธุรกิจ"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:id="@+id/bt_service4"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corners"
+            android:shadowColor="@color/purple" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="+ เพิ่มห้อง"
+        android:textColor="@color/purple"
+        android:textSize="20dp"
+        android:padding="15dp"
+        android:id="@+id/btAddRoom"
+        android:background="@drawable/rounded_puplestroke"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="ดูโปรไฟล์สตูดิโอของคุณ"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:padding="15dp"
+        android:background="@drawable/gradient_button"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottomBarPartner"
+            app:itemBackground="@color/white"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"
+            app:menu="@menu/partner_bottom_navigation"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

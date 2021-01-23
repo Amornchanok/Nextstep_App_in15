@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homePartnerMode"
+        android:title="หน้าแรก"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/notiPartnerMode"
+        android:title="แจ้งเตือน"
+        android:icon="@drawable/ic_notifications"/>
+
+    <item
+        android:id="@+id/bookingPartnerMode"
+        android:title="การให้บริการ"
+        android:icon="@drawable/ic_service"/>
+
+    <item
+        android:id="@+id/managePartnerMode"
+        android:title="การให้บริการ"
+        android:icon="@drawable/ic_managebussiness"/>
+
+    <item
+        android:id="@+id/profilePartnerMode"
+        android:title="โปรไฟล์"
+        android:icon="@drawable/ic_account"/>
+
+</menu>

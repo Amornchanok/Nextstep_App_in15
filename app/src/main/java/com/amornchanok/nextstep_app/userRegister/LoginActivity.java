@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amornchanok.nextstep_app.R;
-import com.amornchanok.nextstep_app.bottomNavigation.UserProfileActivity;
+import com.amornchanok.nextstep_app.userBottomNavigation.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

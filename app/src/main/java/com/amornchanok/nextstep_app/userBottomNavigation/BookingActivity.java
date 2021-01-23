@@ -1,4 +1,4 @@
-package com.amornchanok.nextstep_app.bottomNavigation;
+package com.amornchanok.nextstep_app.userBottomNavigation;
 
 
 import androidx.annotation.NonNull;
@@ -59,9 +59,7 @@ public class BookingActivity extends AppCompatActivity {
 
 
         BottomNavigationView bottomBar = findViewById(R.id.bottomBar);
-
         bottomBar.setSelectedItemId(R.id.myBooking);
-
         bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -91,11 +89,8 @@ public class BookingActivity extends AppCompatActivity {
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userid=user.getUid();
-
         text_user_id = (TextView) findViewById(R.id.text_user_id);
         text_user_id.setText(userid);
-
-
 
         recyclerView=findViewById(R.id.recyclerviewId);
         recyclerView.setHasFixedSize(true);

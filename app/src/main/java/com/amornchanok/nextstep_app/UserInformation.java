@@ -5,11 +5,11 @@ public class UserInformation {
     private String lastName;
     private String email;
     private String phone;
+    private String UserType;
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -17,7 +17,6 @@ public class UserInformation {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -25,7 +24,6 @@ public class UserInformation {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -33,8 +31,12 @@ public class UserInformation {
     public String getPhone() {
         return phone;
     }
-
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
+    public String getUserType() { return UserType; }
+
+    public void setUserType(String userType) { this.UserType = userType; }
 }

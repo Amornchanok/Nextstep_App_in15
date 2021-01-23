@@ -5,20 +5,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".partnerRegister.PartnerRegisterProfileActivity">
+    android:orientation="vertical">
 
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-110dp"
-        android:src="@drawable/img_header01" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/topbar"
+        android:layout_marginBottom="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-95dp"
+        android:background="@drawable/purple_gradient_bg"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:text="ขั้นตอนที่ 2"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:text="กรอกเบอร์โทรศัพท์เพื่อรับรหัสยืนยันตัวตน"
+            android:textSize="20dp"
+            android:textColor="@color/orange"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp">
 
@@ -31,7 +57,6 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:padding="15dp"
-            android:fontFamily="@font/db_adman_x"
             android:shadowColor="@color/purple"
             android:inputType="number"
             android:id="@+id/edt_phone"
@@ -47,8 +72,7 @@
             android:layout_weight="2"
             android:padding="15dp"
             android:background="@drawable/gradient_button"
-            android:id="@+id/btSendOtp"
-            />
+            android:id="@+id/btSendOtp" />
 
 
     </LinearLayout>
@@ -80,8 +104,7 @@
                 android:padding="15dp"
                 android:background="@drawable/rounded_input"
                 android:inputType="number"
-                android:id="@+id/edtOtp"
-                />
+                android:id="@+id/edtOtp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -93,8 +116,7 @@
                 android:layout_weight="2"
                 android:padding="15dp"
                 android:background="@color/white"
-                android:id="@+id/textCountdown"
-                />
+                android:id="@+id/textCountdown" />
 
             <Button
                 android:layout_width="match_parent"
@@ -107,8 +129,7 @@
                 android:padding="15dp"
                 android:fontFamily="@font/db_adman_x"
                 android:background="@drawable/gradient_button"
-                android:id="@+id/btOtpNext"
-                />
+                android:id="@+id/btOtpNext" />
 
         </LinearLayout>
 

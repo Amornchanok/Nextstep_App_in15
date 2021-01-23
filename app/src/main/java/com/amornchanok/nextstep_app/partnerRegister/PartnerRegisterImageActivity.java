@@ -17,11 +17,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amornchanok.nextstep_app.partnerBottomNavigation.PartnerManageActivity;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.util.Util;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -33,6 +36,8 @@ public class PartnerRegisterImageActivity extends AppCompatActivity {
     Button btImgNext;
     FirebaseStorage storage;
     StorageReference storageRef;
+    DatabaseReference databaseReference;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +59,19 @@ public class PartnerRegisterImageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 showPictureDialog();
             }
+        });
+
+        btImgNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+//                databaseReference = reference.child(auth.getCurrentUser().getUid());
+//                databaseReference.child(auth.getCurrentUser().getUid()).child("userType").setValue("isPartner");
+
+                Intent intent = new Intent(PartnerRegisterImageActivity.this, PartnerManageActivity.class);
+                startActivity(intent);
+            }
+
         });
     }
     private void showPictureDialog() {

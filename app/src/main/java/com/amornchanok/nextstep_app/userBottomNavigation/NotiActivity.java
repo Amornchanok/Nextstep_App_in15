@@ -1,4 +1,4 @@
-package com.amornchanok.nextstep_app.bottomNavigation;
+package com.amornchanok.nextstep_app.userBottomNavigation;
 
 import android.content.Intent;
 import android.os.Bundle;

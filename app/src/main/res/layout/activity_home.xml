@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".bottomNavigation.HomeActivity">
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
@@ -167,7 +166,7 @@
             app:itemBackground="@color/white"
             app:itemTextColor="@drawable/selector"
             app:itemIconTint="@drawable/selector"
-            app:menu="@menu/menu_navigation"
+            app:menu="@menu/user_bottom_navigation"
             android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>

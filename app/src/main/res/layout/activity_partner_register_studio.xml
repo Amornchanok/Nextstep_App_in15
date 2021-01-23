@@ -5,20 +5,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".partnerRegister.PartnerRegisterProfileActivity">
+    android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/topbar"
+        android:layout_marginBottom="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/purple_gradient_bg"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:text="ขั้นตอนที่ 1 กรอกข้อมูลสตูดิโอ"
+            android:text="ขั้นตอนที่ 1"
             android:textSize="17dp"
-            android:textColor="@android:color/white"
-            android:padding="15dp"
-            android:background="@color/purple"/>
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:text="กรอกข้อมูลสตูดิโอ"
+            android:textSize="20dp"
+            android:textColor="@color/orange"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,24 +58,34 @@
             android:textSize="20dp"
             android:textColor="@android:color/black"
             android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:id="@+id/edtStudioname"
+            android:id="@+id/edtStudioName"
             android:padding="15dp"
             android:inputType="text"
             android:background="@drawable/rounded_input"/>
 
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ที่ตั้ง"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="เลือกที่ตั้ง"
             android:textSize="20dp"
             android:textColor="@android:color/black"
             android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:id="@+id/edtLocation"
+            android:id="@+id/tvChooseLoc"
             android:padding="15dp"
-            android:inputType="text"
             android:background="@drawable/rounded_input"/>
+
+        <Spinner
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="250dp"
+            android:id="@+id/spLocation"/>
+
+        </RelativeLayout>
 
 
     </LinearLayout>
@@ -92,18 +125,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="เครื่องปรับอากาศ"
+            android:id="@+id/cbAir"
             android:textSize="20dp"/>
 
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ลำโพง"
+            android:id="@+id/cbSpeaker"
             android:textSize="20dp"/>
 
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ห้องน้ำ"
+            android:id="@+id/cbToilet"
             android:textSize="20dp"/>
 
         </LinearLayout>
@@ -119,18 +155,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="อินเทอร์เน็ต"
+                android:id="@+id/cbInternet"
                 android:textSize="20dp"/>
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ที่จอดรถ"
+                android:id="@+id/cbCarpark"
                 android:textSize="20dp"/>
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="อื่นๆ"
+                android:id="@+id/cbOther"
                 android:textSize="20dp"/>
 
         </LinearLayout>
@@ -172,7 +211,6 @@
             android:layout_margin="5dp"
             android:padding="15dp"
             android:shadowColor="@color/purple"
-            android:inputType="number"
             android:id="@+id/edtTimeOpen"
             android:background="@drawable/rounded_input"
             android:layout_weight="1"/>
@@ -186,7 +224,6 @@
             android:layout_margin="5dp"
             android:padding="15dp"
             android:shadowColor="@color/purple"
-            android:inputType="number"
             android:id="@+id/edtTimeClose"
             android:background="@drawable/rounded_input"
             android:layout_weight="1"/>
@@ -212,7 +249,7 @@
             android:padding="15dp"
             android:fontFamily="@font/db_adman_x"
             android:background="@drawable/gradient_button"
-            android:id="@+id/btInfoStudio" />
+            android:id="@+id/btSaveInfoStudio" />
 
     </LinearLayout>
 

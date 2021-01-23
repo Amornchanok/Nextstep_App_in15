@@ -61,7 +61,7 @@
             app:itemBackground="@color/white"
             app:itemTextColor="@drawable/selector"
             app:itemIconTint="@drawable/selector"
-            app:menu="@menu/menu_navigation"
+            app:menu="@menu/user_bottom_navigation"
             android:layout_alignParentBottom="true" />
 
     </RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.amornchanok.nextstep_app">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -33,40 +34,46 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".map.MapsActivity"
-            android:label="@string/title_activity_maps" /> <!-- <activity android:name=".HomeActivity"> -->
-        <!-- <activity android:name=".searchStudio.SearchRoomActivity"> -->
-        <!-- <activity android:name=".userRegister.LoginActivity"> -->
-        <activity android:name=".introScreen.SplashScreenActivity">
+            android:name=".map.MapsActivity" android:label="@string/title_activity_maps" />
+<!--         <activity android:name=".bottomNavigation.HomeActivity">-->
+<!--        <activity android:name=".introScreen.SplashScreenActivity">-->
+            <activity android:name=".StudioListActivity">
+<!--        <activity android:name=".partnerRegister.PartnerRegisterImageActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <activity android:name=".HomeActivity"/> -->
-        <!-- <activity android:name=".introScreen.SplashScreenActivity"/> -->
+        </activity>
+
         <activity android:name=".introScreen.IntroScreenActivity" />
         <activity android:name=".Page_firebase_show_img_100" />
         <activity android:name=".Page_detail" />
         <activity android:name=".RoomListActivity" />
         <activity android:name=".RoomDetailBookingActivity" />
         <activity android:name=".RoomDetailActivity" />
-        <activity android:name=".StudioListActivity" />
-        <activity android:name=".bottomNavigation.BookingActivity" />
+<!--        <activity android:name=".StudioListActivity" />-->
+        <activity android:name=".userBottomNavigation.BookingActivity" />
         <activity android:name=".userRegister.LoginActivity" />
         <activity android:name=".userRegister.UserRegisterActivity" />
-        <activity android:name=".bottomNavigation.UserProfileActivity" />
+        <activity android:name=".userBottomNavigation.UserProfileActivity" />
         <activity android:name=".userRegister.MainActivity" />
         <activity android:name=".partnerRegister.PartnerConditionActivity" />
-        <activity android:name=".partnerRegister.PartnerRegisterProfileActivity" />
-        <activity android:name=".partnerRegister.PartnerRegisterImageActivity" />
+<!--        <activity android:name=".partnerRegister.PartnerRegisterStudioActivity" />-->
+<!--        <activity android:name=".partnerRegister.PartnerRegisterImageActivity" />-->
+
         <activity android:name=".partnerRegister.PartnerRegisterOtpActivity" />
-        <activity android:name=".studioProfile.StudioProfileActivity" />
-        <activity android:name=".bottomNavigation.HomeActivity" />
-        <activity android:name=".calendarBooking.CalendarActivity" />
-        <activity android:name=".searchStudio.SearchRoomActivity" />
-        <activity android:name=".tabProfile.StudioProfileActivity" />
-        <activity android:name=".bottomNavigation.NotiActivity" />
+        <activity android:name=".userBottomNavigation.HomeActivity" />
+        <activity android:name=".searchStudio.SearchStudioActivity" tools:ignore="DuplicateActivity" />
+        <activity android:name=".userBottomNavigation.NotiActivity" />
+
+        <activity android:name=".PartnerAddRoomActivity" />
+
+
+        <activity android:name=".partnerBottomNavigation.NotiPartnerModeActivity" />
+        <activity android:name=".partnerBottomNavigation.BookingPartnerModeActivity" />
+        <activity android:name=".partnerBottomNavigation.PartnerManageActivity" />
+        <activity android:name=".partnerBottomNavigation.PartnerProfileActivity" />
+
     </application>
 
 </manifest>
