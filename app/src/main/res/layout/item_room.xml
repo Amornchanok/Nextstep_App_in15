@@ -18,20 +18,19 @@
         <ImageView
             android:id="@+id/roomImage"
             android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_marginTop="0dp"
+            android:layout_width="wrap_content"
             android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
 
         <TextView
             android:id="@+id/roomName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
             android:gravity="left"
             android:paddingLeft="20dp"
             android:text="ชื่อห้อง"
@@ -40,12 +39,11 @@
             android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvPriceRoom"
+                android:id="@+id/roomPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
-                android:gravity="right"
-                android:paddingRight="20dp"
+                android:gravity="left"
+                android:paddingLeft="20dp"
                 android:text="ราคา"
                 android:layout_weight="2"
                 android:textSize="20dp"
@@ -58,7 +56,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvCapacity"
+                android:id="@+id/roomCapacity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"

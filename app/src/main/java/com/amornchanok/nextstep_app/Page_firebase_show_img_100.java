@@ -51,14 +51,14 @@ public class Page_firebase_show_img_100 extends AppCompatActivity {
 
         firebaseStorage=FirebaseStorage.getInstance();
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("Studios2");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Studios");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //duplicate value remove
                 uploadList.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Upload upload=dataSnapshot.getValue(Upload.class);
+                    Upload upload = dataSnapshot.getValue(Upload.class);
                     assert upload != null;
                     upload.setKey(dataSnapshot.getKey());
                     uploadList.add(upload);
@@ -66,55 +66,16 @@ public class Page_firebase_show_img_100 extends AppCompatActivity {
                 myAdapter=new MyAdapter(Page_firebase_show_img_100.this,uploadList);
                 recyclerView.setAdapter(myAdapter);
 
-//                myAdapter.setOnItemClickListener(new MyAdapter.onItemClickListener() {
-//                    @Override
-//                    public void onItemClick(int position) {
-//                        String name=uploadList.get(position).getImageName();
-//                        Toast.makeText(Page_firebase_show_img_100.this, name+"is called"+position, Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void doAnuTask(int position) {
-//                        Toast.makeText(Page_firebase_show_img_100.this, "do any task selected"+position, Toast.LENGTH_SHORT).show();
-//
-//                    }
-//
-//                    @Override
-//                    public void delete(int position) {
-//                        //get for selected item position
-//                        Upload selectItem=uploadList.get(position);
-//
-//                        //get for selected item key
-//                        final String key=selectItem.getKey();
-//
-//                        StorageReference storageReference=firebaseStorage.getReferenceFromUrl(selectItem.getImageUri());
-//                        storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                databaseReference.child(key).removeValue();
-//                            }
-//                        });
-//                    }
-//                });
-
-
                 myAdapter.setOnItemClickListener(new MyAdapter.onItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        String s_key=uploadList.get(position).getKey();
-                        String s_name=uploadList.get(position).getI_name();
-                        String s_url=uploadList.get(position).getI_url();
+                        String s_key = uploadList.get(position).getKey();
+                        String s_name = uploadList.get(position).getI_name();
+                        String s_url = uploadList.get(position).getI_url();
 
-
-                        // Toast.makeText(Page_firebase_show_img_100.this, name+"is called"+position, Toast.LENGTH_SHORT).show();
                         Toast.makeText(Page_firebase_show_img_100.this, s_key, Toast.LENGTH_SHORT).show();
-                        //  Intent intent = new Intent(activity, Detail.class);
-                        //intent.putExtra(INTENT_STUDIO_ID,studio.getId());
-                        //activity.startActivity(intent);
 
                         Intent newActivity = new Intent(Page_firebase_show_img_100.this, Page_detail.class);
-                        // newActivity.putExtra("s_text_1", position);
-                        // newActivity.putExtra("product_id", s_id);
                         newActivity.putExtra("s_key",s_key);
                         newActivity.putExtra("s_name",s_name);
                         newActivity.putExtra("s_url",s_url);

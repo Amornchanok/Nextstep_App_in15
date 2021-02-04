@@ -34,23 +34,15 @@ import java.util.List;
 public class BookingActivity extends AppCompatActivity {
 
     private String userid;
-//    private FirebaseDatabase myfirebasedatabase;
-//    DatabaseReference myref;
-//    ArrayList<Chart> cc=new ArrayList<Chart>();
-//    Button showch;
-//    private FirebaseAuth auth;
 
     TextView text_user_id;
-
-
-    ////////////////////////////////////
     DatabaseReference databaseReference;
     MyBookingAdapter myAdapter;
     List<MyBooking> uploadList;
     RecyclerView recyclerView;
     ProgressBar progressBar;
     FirebaseStorage firebaseStorage;
-    //////////////////////////////////
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +76,6 @@ public class BookingActivity extends AppCompatActivity {
         });
 
 
-      //  auth = FirebaseAuth.getInstance();
-       // myfirebasedatabase= FirebaseDatabase.getInstance();
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userid=user.getUid();
@@ -101,9 +91,6 @@ public class BookingActivity extends AppCompatActivity {
 
         firebaseStorage= FirebaseStorage.getInstance();
 
-        //databaseReference= FirebaseDatabase.getInstance().getReference("Studios2");
-        //databaseReference= FirebaseDatabase.getInstance().getReference("Booking");
-        // databaseReference= FirebaseDatabase.getInstance().getReference().child(userid).child("Booking");
         databaseReference= FirebaseDatabase.getInstance().getReference("Booking");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -118,8 +105,6 @@ public class BookingActivity extends AppCompatActivity {
                 }
                 myAdapter=new MyBookingAdapter(BookingActivity.this,uploadList);
                 recyclerView.setAdapter(myAdapter);
-
-
 
 
                 progressBar.setVisibility(View.INVISIBLE);

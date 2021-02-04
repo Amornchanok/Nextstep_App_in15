@@ -63,6 +63,30 @@
             android:inputType="text"
             android:background="@drawable/rounded_input"/>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/ivUploadView"/>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:id="@+id/progressBar"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="เลือกรูปภาพ"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:layout_margin="5dp"
+            android:id="@+id/btChooseImage"
+            android:padding="15dp"
+            android:inputType="text"
+            android:background="@drawable/bg_select_photo"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

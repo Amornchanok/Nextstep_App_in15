@@ -2,12 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@drawable/topbar"/>
+
+    <TextView
+        android:id="@+id/text_studioId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text_studioId"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_studioImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text_studioImg"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_studioLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text_studiologo"
+        android:textSize="20dp"
+        android:visibility="gone"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -23,11 +48,20 @@
         android:layout_marginTop="-50dp"
         android:layout_gravity="center_horizontal">
 
-        <View
+        <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/circle_image"
+            app:cardCornerRadius="50dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imgLogo"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_camera"
             android:gravity="left"/>
+
+        </androidx.cardview.widget.CardView>
 
         <View
             android:layout_width="150dp"
@@ -61,7 +95,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvStdName"
+                android:id="@+id/text_studioName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Studio Name"
@@ -102,7 +136,7 @@
             android:gravity="right">
 
             <TextView
-                android:id="@+id/tvStdLocation"
+                android:id="@+id/text_studioLoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/ic_outline_location_on_24"

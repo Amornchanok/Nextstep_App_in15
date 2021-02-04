@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amornchanok.nextstep_app.firebaseStudio.Studios;
@@ -40,8 +41,9 @@ public class StudioListActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Studios");
         options = new FirebaseRecyclerOptions.Builder<Studios>().setQuery(databaseReference, Studios.class).build();
 
-        recyclerView = (RecyclerView) findViewById(R.id.catlist);
+        recyclerView = (RecyclerView) findViewById(R.id.studiolist);
         recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
         adapter = new FirebaseRecyclerAdapter<Studios, StudioViewHolder>(options) {
             @Override
@@ -51,8 +53,12 @@ public class StudioListActivity extends AppCompatActivity {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(StudioListActivity.this, RoomListActivity.class);
+                        Intent i = new Intent(StudioListActivity.this, StudioProfileRoomListActivity.class);
                         i.putExtra("studioId", model.getID());
+                        i.putExtra("stdName", model.getName());
+                        i.putExtra("stdLocation", model.getLocation());
+                        i.putExtra("imageLogo", model.getLogo());
+                        i.putExtra("imagePreview", model.getImage());
                         Toast.makeText(getApplicationContext(), model.getName(), Toast.LENGTH_LONG).show();
                         startActivity(i);
                     }
@@ -60,13 +66,10 @@ public class StudioListActivity extends AppCompatActivity {
 
                 Picasso.get().load(model.getImage()).into(holder.imageView, new Callback() {
                     @Override
-                    public void onSuccess() {
-
-                    }
+                    public void onSuccess() { }
 
                     @Override
                     public void onError(Exception e) {
-
 
                     }
                 });

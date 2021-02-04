@@ -40,10 +40,10 @@ public class PartnerManageActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.homePartnerMode:
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+//                    case R.id.homePartnerMode:
+//                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
                     case R.id.notiPartnerMode:
                         startActivity(new Intent(getApplicationContext(), NotiPartnerModeActivity.class));
                         overridePendingTransition(0,0);

@@ -75,11 +75,6 @@
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </ImageView>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,28 +87,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Recommend list01"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:padding="15dp"
-                android:background="@color/gray" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Recommend list02"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:padding="15dp"
-                android:background="@color/gray" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:id="@+id/studiolist"
+            android:orientation="horizontal"/>
         </LinearLayout>
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/studiolist"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
 
 
         <TextView
@@ -128,29 +113,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Promotion list01"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:padding="15dp"
-                android:background="@color/gray"
-                />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Promotion list02"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:padding="15dp"
-                android:background="@color/gray"/>
 
         </LinearLayout>
     </LinearLayout>

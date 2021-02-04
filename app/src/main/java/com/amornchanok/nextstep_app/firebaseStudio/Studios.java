@@ -6,6 +6,7 @@ public class Studios {
     private String ID;
     private String Name;
     private String Image;
+    private String Logo;
     private String Location;
     private String TimeOpen;
     private String TimeClose;
@@ -21,10 +22,11 @@ public class Studios {
 
     public Studios() { }
 
-    public Studios(String Name, String Image, String ID, String Location ,String TimeOpen ,String TimeClose) {
+    public Studios(String Name, String Image, String ID, String Location, String Logo ,String TimeOpen ,String TimeClose) {
         this.Name = Name;
         this.ID = ID;
         this.Location = Location;
+        this.Logo = Logo;
         this.Image = Image;
         this.TimeOpen = TimeOpen;
         this.TimeClose = TimeClose;
@@ -53,6 +55,9 @@ public class Studios {
 
     public String getLocation() { return Location;}
     public void setLocation(String location) { this.Location = location; }
+
+    public String getLogo() { return Logo; }
+    public void setLogo(String logo) { this.Logo = logo; }
 
     public String getTimeOpen() { return TimeOpen; }
     public void setTimeOpen(String timeOpen) { this.TimeOpen = timeOpen; }
