@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.amornchanok.nextstep_app.firebaseStudio.Rooms;
+import com.amornchanok.nextstep_app.firebaseConnect.Rooms;
 import com.amornchanok.nextstep_app.ViewHolder.RoomViewHolder;
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,7 +38,7 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     String Studio_id;
     Query databaseReference;
-    FirebaseRecyclerOptions<Rooms> optionsproducts;
+    FirebaseRecyclerOptions<Rooms> optionsrooms;
     FirebaseRecyclerAdapter<Rooms, RoomViewHolder> adapter;
 
     String studioId;
@@ -84,23 +84,20 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
         Picasso.get().load("" + studioImg).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(imgPreview);
         Picasso.get().load("" + studioLogo).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(imgLogo);
 
-
  // RoomList
-
 
         if (getIntent() != null)
 
         Studio_id = getIntent().getStringExtra("studioId");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Rooms").orderByChild("StudioId").equalTo(Studio_id);
-        optionsproducts = new FirebaseRecyclerOptions.Builder<Rooms>().setQuery(databaseReference, Rooms.class).build();
+        optionsrooms = new FirebaseRecyclerOptions.Builder<Rooms>().setQuery(databaseReference, Rooms.class).build();
 
         recyclerView = (RecyclerView) findViewById(R.id.room_list);
         recyclerView.setHasFixedSize(true);
 
         if (!Studio_id.isEmpty() && Studio_id!= null) {
 
-
-            adapter = new FirebaseRecyclerAdapter<Rooms, RoomViewHolder>(optionsproducts) {
+            adapter = new FirebaseRecyclerAdapter<Rooms, RoomViewHolder>(optionsrooms) {
                 @Override
                 protected void onBindViewHolder(RoomViewHolder holder, int position, final Rooms model) {
                     holder.roomName.setText(model.getName());
@@ -132,18 +129,13 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
 
                         }
                     });
-
                 }
-
-
 
                 @NonNull
                 @Override
                 public RoomViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
                     View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_room, viewGroup, false);
                     return new RoomViewHolder(view);
-
-
                 }
             };
 
@@ -151,9 +143,7 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(gridLayoutManager);
             recyclerView.setAdapter(adapter);
 
-
         }
-
     }
 
     @Override

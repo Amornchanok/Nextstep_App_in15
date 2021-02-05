@@ -1,6 +1,4 @@
-package com.amornchanok.nextstep_app.firebaseStudio;
-
-import java.sql.Time;
+package com.amornchanok.nextstep_app.firebaseConnect;
 
 public class Studios {
     private String ID;
@@ -17,8 +15,6 @@ public class Studios {
     private String cbInternet;
     private String cbCarpark;
     private String cbOther;
-
-
 
     public Studios() { }
 

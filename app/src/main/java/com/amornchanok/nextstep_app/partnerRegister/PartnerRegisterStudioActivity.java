@@ -19,13 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.amornchanok.nextstep_app.Upload;
-import com.amornchanok.nextstep_app.firebaseStudio.Studios;
+import com.amornchanok.nextstep_app.firebaseConnect.Studios;
 import com.amornchanok.nextstep_app.R;
-import com.amornchanok.nextstep_app.firebaseStudio.Studios;
+import com.amornchanok.nextstep_app.firebaseConnect.Upload;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,7 +36,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;

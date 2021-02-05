@@ -13,7 +13,6 @@
         android:background="@drawable/topbar"
         android:layout_marginBottom="10dp"/>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,16 +63,17 @@
             android:background="@drawable/rounded_input"/>
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/ivUploadView"/>
         <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:visibility="gone"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:id="@+id/progressBar"/>
+            android:id="@+id/progressBar" />
 
         <Button
             android:layout_width="match_parent"

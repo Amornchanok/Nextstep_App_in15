@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.amornchanok.nextstep_app.firebaseStudio.Booking;
+import com.amornchanok.nextstep_app.firebaseConnect.Booking;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,29 +31,26 @@ public class RoomDetailActivity extends AppCompatActivity {
     TextView text_capacity;
 
     ImageView imageView;
-    Button b_next_1;
-    String s_url;
+    Button bt_book;
 
-    // Declaring String variable ( In which we are storing firebase server URL ).
     public static final String Firebase_Server_URL = "https://nextstepapp-740cf.firebaseio.com/";
 
-    // Declaring String variables to store name & phone number get from EditText.
     String studioId;
     String room_name;
     String room_image;
     String room_price;
     String room_capacity;
+    String room_imageurl;
 
     Firebase firebase;
     DatabaseReference databaseReference;
 
-    // Root Database Name for Firebase Database.
     public static final String Database_Path = "Booking";
 
     FirebaseUser firebaseUser;
     String userID;
 
-    public String currentDate,currenttime;
+    public String currentDate,currentTime;
     String roomId;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -73,27 +70,20 @@ public class RoomDetailActivity extends AppCompatActivity {
         text_capacity = (TextView) findViewById(R.id.text_capacity);
         text_url = (TextView) findViewById(R.id.text_url);
 
-
         Intent intent = getIntent();
-        String s_Studio_id = intent.getStringExtra("Studio_id");
-        String s_id= intent.getStringExtra("roomId");
-        String room_price= intent.getStringExtra("roomPrice");
-        String room_name = intent.getStringExtra("roomName");
-        String room_capacity = intent.getStringExtra("roomCapacity");
-        s_url = intent.getStringExtra("roomImage");
+//        String s_Studio_id = intent.getStringExtra("Studio_id");
+//        String s_id= intent.getStringExtra("roomId");
+        room_price= intent.getStringExtra("roomPrice");
+        room_name = intent.getStringExtra("roomName");
+        room_capacity = intent.getStringExtra("roomCapacity");
+        room_imageurl = intent.getStringExtra("roomImage");
 
-        text_url.setText("" + s_url);
+        text_url.setText("" + room_imageurl);
         text_name.setText("" + room_name);
         text_price.setText("" + room_price + "บาท/ชั่วโมง");
         text_capacity.setText("" + room_capacity);
 
-        Picasso.get()
-                //.load(get(s_url).getI_url())
-                .load("" + s_url)
-                .placeholder(R.mipmap.ic_launcher)
-                .fit()
-                .centerCrop()
-                .into(imageView);
+        Picasso.get().load("" + room_imageurl).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(imageView);
 
         studioId = getIntent().getStringExtra("Studio_id");
         roomId = getIntent().getStringExtra("roomId");
@@ -104,8 +94,8 @@ public class RoomDetailActivity extends AppCompatActivity {
 
 // Booking
 
-        b_next_1 = (Button) findViewById(R.id.b_next_1);
-        b_next_1.setOnClickListener(new View.OnClickListener() {
+        bt_book = (Button) findViewById(R.id.bt_book);
+        bt_book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -115,7 +105,7 @@ public class RoomDetailActivity extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
                 SimpleDateFormat format=new SimpleDateFormat("HH:mm:ss");
-                currenttime=format.format(calendar.getTime());
+                currentTime=format.format(calendar.getTime());
 
                 // Adding name into class function object.
                 data_input.setStudio_id(studioId);
@@ -125,7 +115,7 @@ public class RoomDetailActivity extends AppCompatActivity {
 //                data_input.setRoom_price(room_price);
                 data_input.setUser_id(userID);
                 data_input.setDate(currentDate);
-                data_input.setTime(currenttime);
+                data_input.setTime(currentTime);
 
                 // Getting the ID from firebase database.
                 String StudentRecordIDFromServer = databaseReference.push().getKey();
@@ -141,9 +131,7 @@ public class RoomDetailActivity extends AppCompatActivity {
     }
 
     public void GetDataFromText() {
-
         room_name = text_name.getText().toString().trim();
-
 
     }
 }

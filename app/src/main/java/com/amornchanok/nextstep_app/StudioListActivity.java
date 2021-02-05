@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amornchanok.nextstep_app.firebaseStudio.Studios;
+import com.amornchanok.nextstep_app.firebaseConnect.Studios;
 import com.amornchanok.nextstep_app.ViewHolder.StudioViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -26,24 +26,25 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class StudioListActivity extends AppCompatActivity {
-    //////
+
     DatabaseReference databaseReference;
     FirebaseRecyclerOptions<Studios>options;
     FirebaseRecyclerAdapter<Studios, StudioViewHolder>adapter;
-    RecyclerView recyclerView;
+    RecyclerView recycleView;
     ArrayList<Studios> arrayList;
+
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_studio_list);
 
-        arrayList=new ArrayList<>();
+        arrayList = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Studios");
         options = new FirebaseRecyclerOptions.Builder<Studios>().setQuery(databaseReference, Studios.class).build();
 
-        recyclerView = (RecyclerView) findViewById(R.id.studiolist);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        recycleView = (RecyclerView) findViewById(R.id.studiolist);
+        recycleView.setHasFixedSize(true);
+        recycleView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
         adapter = new FirebaseRecyclerAdapter<Studios, StudioViewHolder>(options) {
             @Override
@@ -64,7 +65,7 @@ public class StudioListActivity extends AppCompatActivity {
                     }
                 });
 
-                Picasso.get().load(model.getImage()).into(holder.imageView, new Callback() {
+                Picasso.get().load(model.getImage()).into(holder.stdImage, new Callback() {
                     @Override
                     public void onSuccess() { }
 
@@ -85,9 +86,8 @@ public class StudioListActivity extends AppCompatActivity {
         };
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(adapter);
-
+        recycleView.setLayoutManager(gridLayoutManager);
+        recycleView.setAdapter(adapter);
 
     }
     @Override

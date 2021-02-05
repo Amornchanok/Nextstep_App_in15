@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amornchanok.nextstep_app.firebaseStudio.MyBooking;
+import com.amornchanok.nextstep_app.firebaseConnect.MyBooking;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -23,7 +23,6 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
     private Context context;
     private List<MyBooking> uploadList;
     private onItemClickListener listener;
-
 
     public MyBookingAdapter(Context context, List<MyBooking> uploadList) {
         this.context = context;
@@ -40,14 +39,11 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.imageNameTextView.setText(uploadList.get(position).getRoom_name());
+        holder.nameTextView.setText(uploadList.get(position).getRoom_name());
         holder.text_date.setText(uploadList.get(position).getDate());
         holder.text_time.setText(uploadList.get(position).getTime());
-        // Picasso.with(context)
 
         Picasso.get().load(uploadList.get(position).getRoom_img()).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(holder.imageView);
-
-
 
 
     }
@@ -57,27 +53,24 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
         return uploadList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
-            View.OnCreateContextMenuListener,MenuItem.OnMenuItemClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imageView;
-        TextView imageNameTextView;
+        TextView nameTextView;
         TextView text_date;
         TextView text_time;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView=itemView.findViewById(R.id.cardImageViewId);
-            imageNameTextView=itemView.findViewById(R.id.cardTextViewId);
-            text_date=itemView.findViewById(R.id.text_date);
-            text_time=itemView.findViewById(R.id.text_time);
+            imageView = itemView.findViewById(R.id.cardImageViewId);
+            nameTextView = itemView.findViewById(R.id.cardTextViewId);
+            text_date = itemView.findViewById(R.id.text_date);
+            text_time = itemView.findViewById(R.id.text_time);
 
             itemView.setOnClickListener(this);
-            itemView.setOnCreateContextMenuListener(this);
+//            itemView.setOnCreateContextMenuListener(this);
 
         }
-
-
 
         @Override
         public void onClick(View v) {
@@ -89,40 +82,40 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
             }
         }
 
-        @Override
-        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Choose an action");
-            MenuItem doAnyTask=menu.add(Menu.NONE,1,1,"do any task");
-            MenuItem delete=menu.add(Menu.NONE,2,2,"delete");
-            doAnyTask.setOnMenuItemClickListener(this);
-            delete.setOnMenuItemClickListener(this);
-        }
+//        @Override
+//        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//            menu.setHeaderTitle("Choose an action");
+//            MenuItem doAnyTask=menu.add(Menu.NONE,1,1,"do any task");
+//            MenuItem delete=menu.add(Menu.NONE,2,2,"delete");
+//            doAnyTask.setOnMenuItemClickListener(this);
+//            delete.setOnMenuItemClickListener(this);
+//        }
 
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            if (listener!=null){
-                int position=getAdapterPosition();
-                if (position!=RecyclerView.NO_POSITION){
-                    switch(item.getItemId()){
-                        case 1:
-                            listener.doAnuTask(position);
-                            return true;
-                        case 2:
-                            listener.delete(position);
-                            return true;
-                    }
-                }
-            }
-            return false;
-        }
+//        @Override
+//        public boolean onMenuItemClick(MenuItem item) {
+//            if (listener!=null){
+//                int position=getAdapterPosition();
+//                if (position!=RecyclerView.NO_POSITION){
+//                    switch(item.getItemId()){
+//                        case 1:
+//                            listener.doAnuTask(position);
+//                            return true;
+//                        case 2:
+//                            listener.delete(position);
+//                            return true;
+//                    }
+//                }
+//            }
+//            return false;
+//        }
     }
 
     public  interface onItemClickListener{
         void onItemClick(int position);
         void doAnuTask(int position);
         void delete(int position);
-
     }
+
     public void setOnItemClickListener(onItemClickListener listener){
         this.listener=listener;
     }

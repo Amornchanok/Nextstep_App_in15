@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.amornchanok.nextstep_app.MyBookingAdapter;
 import com.amornchanok.nextstep_app.R;
-import com.amornchanok.nextstep_app.firebaseStudio.MyBooking;
+import com.amornchanok.nextstep_app.firebaseConnect.MyBooking;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,7 +39,7 @@ public class BookingActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     MyBookingAdapter myAdapter;
     List<MyBooking> uploadList;
-    RecyclerView recyclerView;
+    RecyclerView recycleView;
     ProgressBar progressBar;
     FirebaseStorage firebaseStorage;
 
@@ -78,14 +78,14 @@ public class BookingActivity extends AppCompatActivity {
 
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        userid=user.getUid();
+        userid = user.getUid();
         text_user_id = (TextView) findViewById(R.id.text_user_id);
         text_user_id.setText(userid);
 
-        recyclerView=findViewById(R.id.recyclerviewId);
-        recyclerView.setHasFixedSize(true);
+        recycleView=findViewById(R.id.recycleviewId);
+        recycleView.setHasFixedSize(true);
         progressBar=findViewById(R.id.imageProgressBar);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recycleView.setLayoutManager(new LinearLayoutManager(this));
 
         uploadList=new ArrayList<>();
 
@@ -104,8 +104,7 @@ public class BookingActivity extends AppCompatActivity {
                     uploadList.add(upload);
                 }
                 myAdapter=new MyBookingAdapter(BookingActivity.this,uploadList);
-                recyclerView.setAdapter(myAdapter);
-
+                recycleView.setAdapter(myAdapter);
 
                 progressBar.setVisibility(View.INVISIBLE);
             }

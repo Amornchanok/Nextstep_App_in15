@@ -1,4 +1,4 @@
-package com.amornchanok.nextstep_app.firebaseStudio;
+package com.amornchanok.nextstep_app.firebaseConnect;
 
 public class Rooms {
     private String Capacity;
@@ -15,13 +15,11 @@ public class Rooms {
         Name = name;
         Image = image;
         StudioId = studioId;
-        ID=id;
+        ID = id;
         Price = price;
     }
 
-    public String getID() {
-        return ID;
-    }
+    public String getID() { return ID; }
     public void setID(String ID) {
         this.ID = ID;
     }
@@ -53,6 +51,5 @@ public class Rooms {
     public void setStudioId(String StudioId) { this.StudioId = StudioId;}
 
     public String getPrice() { return Price; }
-
     public void setPrice(String price) { this.Price = price; }
 }

@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amornchanok.nextstep_app.R;
-import com.amornchanok.nextstep_app.UserInformation;
+import com.amornchanok.nextstep_app.firebaseConnect.UserInformation;
 import com.amornchanok.nextstep_app.partnerRegister.PartnerConditionActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;

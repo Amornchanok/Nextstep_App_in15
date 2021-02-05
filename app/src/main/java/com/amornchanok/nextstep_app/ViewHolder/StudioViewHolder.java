@@ -16,19 +16,18 @@ public class StudioViewHolder extends RecyclerView.ViewHolder implements View.On
 
     public TextView stdName;
     public TextView stdLocation;
-    public ImageView imageView;
+    public ImageView stdImage;
     private ItemclickListner itemclickListner;
 
     public StudioViewHolder(@NonNull View itemView) {
         super(itemView);
-        stdLocation = (TextView) itemView.findViewById(R.id.stdLocation);
-        stdName = (TextView) itemView.findViewById(R.id.category_name);
-        imageView = (ImageView) itemView.findViewById(R.id.category_image);
+        stdLocation = (TextView) itemView.findViewById(R.id.studio_location);
+        stdName = (TextView) itemView.findViewById(R.id.studio_name);
+        stdImage = (ImageView) itemView.findViewById(R.id.studio_image);
 
-itemView.setOnClickListener(this);
+        itemView.setOnClickListener(this);
 
     }
-
 
     @Override
     public void onClick(View v) {

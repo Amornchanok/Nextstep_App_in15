@@ -1,101 +1,57 @@
 package com.amornchanok.nextstep_app.userBottomNavigation;
 
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.amornchanok.nextstep_app.StudioProfileRoomListActivity;
-import com.amornchanok.nextstep_app.ViewHolder.StudioViewHolder;
+import com.amornchanok.nextstep_app.SuggestListAdapter;
 
-import com.amornchanok.nextstep_app.firebaseStudio.Studios;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.searchStudio.SearchStudioActivity;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private Button bt_service1;
 
-    DatabaseReference databaseReference;
-    FirebaseRecyclerOptions<Studios> options;
-    FirebaseRecyclerAdapter<Studios, StudioViewHolder> adapter;
     RecyclerView recyclerView;
-    ArrayList<Studios> arrayList;
+    ArrayList<String> studiolist;
+    RecyclerView.LayoutManager RecyclerViewLayoutManager;
+    SuggestListAdapter suggestListAdapter;
+    LinearLayoutManager HorizontalLayout;
 
-    AlertDialog dialog;
-    ArrayList<Studios> studios = new ArrayList<>();
-
+    View ChildView;
+    int RecyclerViewItemPosition;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_home);
 
-        arrayList=new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Studios");
-        options = new FirebaseRecyclerOptions.Builder<Studios>().setQuery(databaseReference, Studios.class).build();
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
+        RecyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
 
-        recyclerView = (RecyclerView) findViewById(R.id.studiolist);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(RecyclerViewLayoutManager);
 
-        adapter = new FirebaseRecyclerAdapter<Studios, StudioViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(StudioViewHolder holder, final int position, final Studios model) {
-                holder.stdName.setText(model.getName());
-                holder.stdLocation.setText(model.getLocation());
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(HomeActivity.this, StudioProfileRoomListActivity.class);
-                        i.putExtra("studioId", model.getID());
-                        Toast.makeText(getApplicationContext(), model.getName(), Toast.LENGTH_LONG).show();
-                        startActivity(i);
-                    }
-                });
+        AddItemsToRecyclerViewArrayList();
 
-                Picasso.get().load(model.getImage()).into(holder.imageView, new Callback() {
-                    @Override
-                    public void onSuccess() { }
+        suggestListAdapter = new SuggestListAdapter(studiolist);
 
-                    @Override
-                    public void onError(Exception e) {
+        HorizontalLayout = new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(HorizontalLayout);
+        recyclerView.setAdapter(suggestListAdapter);
 
-                    }
-                });
-
-            }
-
-            @NonNull
-            @Override
-            public StudioViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_studio, viewGroup, false);
-                return new StudioViewHolder(view);
-            }
-        };
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(adapter);
+        // Button Service
 
         bt_service1 = (Button) findViewById(R.id.bt_service1);
         bt_service1.setOnClickListener(new View.OnClickListener() {
@@ -137,18 +93,17 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if(adapter!=null)
-            adapter.startListening();
-    }
+    public void AddItemsToRecyclerViewArrayList()
+    {
+        // Adding items to ArrayList
+        studiolist = new ArrayList<>();
+        studiolist.add("D Dance Studio");
+        studiolist.add("Independanze");
+        studiolist.add("Fitness 7");
+        studiolist.add("Danctination");
+        studiolist.add("Pandora Box");
+        studiolist.add("The Artist");
 
-    @Override
-    protected void onStop() {
-        if (adapter!=null)
-            adapter.stopListening();
-        super.onStop();
     }
 
 

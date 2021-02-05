@@ -1,4 +1,4 @@
-package com.amornchanok.nextstep_app;
+package com.amornchanok.nextstep_app.firebaseConnect;
 
 public class UserInformation {
     private String name;
@@ -35,8 +35,6 @@ public class UserInformation {
         this.phone = phone;
     }
 
-
     public String getUserType() { return UserType; }
-
     public void setUserType(String userType) { this.UserType = userType; }
 }

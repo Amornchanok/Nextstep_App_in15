@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/roomImage"
+            android:id="@+id/room_image"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:scaleType="centerCrop" />
@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
         <TextView
-            android:id="@+id/roomName"
+            android:id="@+id/room_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
@@ -39,7 +39,7 @@
             android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/roomPrice"
+                android:id="@+id/room_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/roomCapacity"
+                android:id="@+id/room_capacity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"

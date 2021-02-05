@@ -83,23 +83,34 @@
             android:textColor="@android:color/black">
         </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:id="@+id/studiolist"
-            android:orientation="horizontal"/>
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
 
 <!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/studiolist"-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scrollbars="none"-->
+<!--            android:id="@+id/studiolist"-->
+<!--            android:orientation="horizontal"/>-->
+<!--        </LinearLayout>-->
 
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relativelayout">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:scrollbars="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -107,14 +118,8 @@
             android:text="โปรโมชันมาแรง"
             android:textSize="25dp"
             android:textColor="@android:color/black">
-
         </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout

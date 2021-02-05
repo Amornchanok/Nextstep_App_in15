@@ -33,13 +33,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".map.MapsActivity" android:label="@string/title_activity_maps" />
-<!--         <activity android:name=".userBottomNavigation.HomeActivity">-->
-<!--        <activity android:name=".introScreen.SplashScreenActivity">-->
-            <activity android:name=".StudioListActivity">
-<!--        <activity android:name=".Page_detail">-->
-<!--        <activity android:name=".partnerRegister.PartnerRegisterStudioActivity">-->
+<!--        <activity android:name=".RoomDetailActivity">-->
+        <activity android:name=".introScreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -47,12 +42,10 @@
         </activity>
 
         <activity android:name=".introScreen.IntroScreenActivity" />
-        <activity android:name=".Page_firebase_show_img_100" />
-<!--        <activity android:name=".Page_detail" />-->
         <activity android:name=".StudioProfileRoomListActivity" />
-        <activity android:name=".RoomDetailBookingActivity" />
+<!--        <activity android:name=".RoomDetailBookingActivity" />-->
         <activity android:name=".RoomDetailActivity" />
-<!--        <activity android:name=".StudioListActivity" />-->
+        <activity android:name=".StudioListActivity" />
         <activity android:name=".userBottomNavigation.BookingActivity" />
         <activity android:name=".userRegister.LoginActivity" />
         <activity android:name=".userRegister.UserRegisterActivity" />
@@ -68,7 +61,6 @@
         <activity android:name=".userBottomNavigation.NotiActivity" />
 
 <!--        <activity android:name=".PartnerAddRoomActivity" />-->
-
 
         <activity android:name=".partnerBottomNavigation.NotiPartnerModeActivity" />
         <activity android:name=".partnerBottomNavigation.BookingPartnerModeActivity" />

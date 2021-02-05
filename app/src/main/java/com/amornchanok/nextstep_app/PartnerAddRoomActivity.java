@@ -1,6 +1,5 @@
 package com.amornchanok.nextstep_app;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.amornchanok.nextstep_app.firebaseStudio.Rooms;
-import com.amornchanok.nextstep_app.firebaseStudio.Studios;
-import com.amornchanok.nextstep_app.partnerBottomNavigation.PartnerManageActivity;
-import com.amornchanok.nextstep_app.partnerRegister.PartnerRegisterOtpActivity;
-import com.amornchanok.nextstep_app.partnerRegister.PartnerRegisterStudioActivity;
+import com.amornchanok.nextstep_app.firebaseConnect.Rooms;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +26,6 @@ public class PartnerAddRoomActivity extends AppCompatActivity {
     Rooms rooms;
     int idObj = 0;
     int idRoom = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
