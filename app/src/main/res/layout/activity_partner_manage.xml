@@ -31,13 +31,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_bookservice"
+            android:drawableTop="@drawable/ic_b1"
             android:text="ตารางการจอง"
             android:textSize="20dp"
             android:textColor="@android:color/black"
             android:layout_margin="5dp"
             android:layout_weight="2"
-            android:id="@+id/btBookservice"
+            android:id="@+id/btBookingFromUser"
             android:padding="15dp"
             android:background="@drawable/rounded_corners"
             android:shadowColor="@color/purple" />
@@ -45,13 +45,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_moreoption"
+            android:drawableTop="@drawable/ic_b2"
             android:text="ปรับแต่งธุรกิจ"
             android:textSize="20dp"
             android:textColor="@android:color/black"
             android:layout_margin="5dp"
             android:layout_weight="2"
-            android:id="@+id/bt_service4"
+            android:id="@+id/btManageBusiness"
             android:padding="15dp"
             android:background="@drawable/rounded_corners"
             android:shadowColor="@color/purple" />

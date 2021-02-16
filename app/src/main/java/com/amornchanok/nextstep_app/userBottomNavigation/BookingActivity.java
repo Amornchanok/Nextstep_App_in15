@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.amornchanok.nextstep_app.MyBookingAdapter;
+import com.amornchanok.nextstep_app.AdapterStudio.MyBookingAdapter;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.firebaseConnect.MyBooking;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +42,6 @@ public class BookingActivity extends AppCompatActivity {
     RecyclerView recycleView;
     ProgressBar progressBar;
     FirebaseStorage firebaseStorage;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

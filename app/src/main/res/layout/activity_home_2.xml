@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/topbar"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:drawableTop="@drawable/icon_mainservice01"
+            android:text="ห้องซ้อมเต้น"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:id="@+id/bt_service1"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corners"
+            android:shadowColor="@color/purple" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:drawableTop="@drawable/icon_mainservice03"
+            android:text="การแข่งขัน"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:id="@+id/bt_service4"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corners"
+            android:shadowColor="@color/purple" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:text="Advertise Contest"
+            android:textSize="17dp"
+            android:textColor="@android:color/black"
+            android:layout_weight="2"
+            android:background="@drawable/banner_1"
+            android:shadowColor="@color/purple" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ห้องซ้อมเต้นแนะนำ"
+            android:textSize="25dp"
+            android:textColor="@android:color/black">
+        </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_3"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="horizontal"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="โปรโมชันมาแรง"
+            android:textSize="25dp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:layout_gravity="center">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

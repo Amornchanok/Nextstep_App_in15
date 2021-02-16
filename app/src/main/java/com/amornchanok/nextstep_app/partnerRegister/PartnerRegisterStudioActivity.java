@@ -1,298 +1,379 @@
 package com.amornchanok.nextstep_app.partnerRegister;
 
-import android.content.ContentResolver;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.amornchanok.nextstep_app.firebaseConnect.Studios;
+import com.amornchanok.nextstep_app.Model_Studios;
 import com.amornchanok.nextstep_app.R;
-import com.amornchanok.nextstep_app.firebaseConnect.Upload;
-import com.bumptech.glide.Glide;
+import com.amornchanok.nextstep_app.partnerBottomNavigation.PartnerManageActivity;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.firebase.storage.UploadTask.TaskSnapshot;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 
 
-public class PartnerRegisterStudioActivity extends AppCompatActivity  {
+public class PartnerRegisterStudioActivity extends AppCompatActivity {
+    private String Price, Name, saveCurrentDate, saveCurrentTime;
+    private Button AddNewProductButton;
+    private ImageView InputProductImage;
+    private EditText InputProductName, InputProductDescription, InputProductPrice;
+    private static final int GalleryPick = 1;
+    private Uri ImageUri;
+    private String productRandomKey, downloadImageUrl;
+    private StorageReference ProductImagesRef;
+    private DatabaseReference ProductsRef, sellersRef;
+    private ProgressDialog loadingBar;
 
-    private static final int PICK_IMAGE_REQUEST = 1;
 
-    EditText edtStudioName,edtTimeOpen,edtTimeClose;
-    CheckBox cbAir,cbSpeaker,cbToilet,cbInternet,cbCarpark,cbOther;
-    TextView tvChooseLoc;
-    Spinner spLocation,spTimeOpen,spTimeClose;
-    Button btSaveInfoStudio,btChooseImage;
+    String CategoryName = "1";
+    String sID = "1";
+    String sName = "1";
+    String sAddres = "1";
+    String sPhone = "1";
+    String sEmail = "1";
 
-    ProgressBar progressBar;
-    ImageView ivUploadView;
-    Uri imageUri;
-    private StorageReference storageRef;
+    String s_orderid;
+    String s_orderdate;
+    String s_orderstatus;
+    String s_ordertotalprice;
+    String s_orderuserupimage;
+    String s_rentuser;
 
-    FirebaseDatabase database;
+//    TextView text_orderid;
+//    TextView text_orderdate;
+//    TextView text_orderstatus;
+//    TextView text_ordertotalprice;
+//    TextView text_orderuserupimage;
+//    TextView text_rentuser;
+
+
+    EditText text_orderid;
+    EditText text_orderdate;
+    EditText text_orderstatus;
+    EditText text_ordertotalprice;
+    EditText text_orderuserupimage;
+    EditText text_rentuser;
+
+    Spinner spin;
+
+    String spin_val;
+
+    String[] gender = { "promotion", "suggest" };
+    //array of strings used to populate the spinner
+EditText text_name;
+    EditText text_location;
+
+   // FirebaseDatabase database;
     DatabaseReference reference;
-    Studios studios;
+    //Studios studios;
     int id = 0;
 
+    FirebaseDatabase database;
+    DatabaseReference ref;
+
+    int maxid = 0;
+    Model_Studios member;
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_register_studio);
 
-        tvChooseLoc = findViewById(R.id.tvChooseLoc);
-        edtTimeOpen = findViewById(R.id.edtTimeOpen);
-        edtTimeClose = findViewById(R.id.edtTimeClose);
-        spLocation = findViewById(R.id.spLocation);
-        btSaveInfoStudio = findViewById(R.id.btSaveInfoStudio);
-        studios = new Studios();
-        cbAir = findViewById(R.id.cbAir);
-        cbSpeaker = findViewById(R.id.cbSpeaker);
-        cbToilet= findViewById(R.id.cbToilet);
-        cbInternet = findViewById(R.id.cbInternet);
-        cbCarpark = findViewById(R.id.cbCarpark);
-        cbOther = findViewById(R.id.cbOther);
-        reference = database.getInstance().getReference().child("Studios");
-        storageRef = FirebaseStorage.getInstance().getReference().child("Studios");
 
-        String cb1 = "แอร์";
-        String cb2 = "ลำโพง";
-        String cb3 = "ห้องน้ำ";
-        String cb4 = "อินเทอร์เน็ต";
-        String cb5 = "ลานจอดรถ";
-        String cb6 = "อื่นๆ";
+        member = new Model_Studios();
+        ref = database.getInstance().getReference().child("Studios");
 
-        btChooseImage = findViewById(R.id.btChooseImage);
-        ivUploadView = findViewById(R.id.ivUploadView);
-        progressBar = findViewById(R.id.progressBar);
-
-        btChooseImage.setOnClickListener(new View.OnClickListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                openFileChoose();
-            }
-        });
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    maxid = (int) dataSnapshot.getChildrenCount();
 
-
-
-//      Start  Spinner Locations
-
-        List<String> Locations = new ArrayList<>();
-        Locations.add(0,"เลือกที่ตั้ง");
-        Locations.add("พญาไท");
-        Locations.add("ลาดพร้าว");
-        Locations.add("ราชเทวี");
-        Locations.add("เอกมัย");
-        Locations.add("รัชดา");
-        Locations.add("ปทุมวัน");
-        Locations.add("มีนบุรี");
-        Locations.add("หลักสี่");
-        Locations.add("จตุจักร");
-        Locations.add("บางซื่อ");
-        Locations.add("พระราม 2");
-        Locations.add("บางแค");
-        Locations.add("วัฒนา");
-        Locations.add("บางเขน");
-        Locations.add("บางพลัด");
-        Locations.add("ห้วยขวาง");
-
-        ArrayAdapter<String> dataAdapter;
-        dataAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,Locations);
-
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spLocation.setAdapter(dataAdapter);
-
-        spLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-
-                if (adapterView.getItemAtPosition(position).equals("เลือกที่ตั้ง")) {
-
-                }else {
-                    tvChooseLoc.setText(adapterView.getSelectedItem().toString());
                 }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-
-//      End  Spinner Locations
-
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    id = (int) snapshot.getChildrenCount();
+                else
+                {
+                    ///
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
-        btSaveInfoStudio.setOnClickListener(new View.OnClickListener() {
+////////////////////////////////////////////////////////////////////////////////////////////
+        spin = (Spinner) findViewById(R.id.spinner);//fetching view’s id
+           //Register a callback to be invoked when an item in this AdapterView has been selected
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                edtStudioName = (EditText) findViewById(R.id.edtStudioName);
-                String numberAsString = Integer.toString(id);
-
-                studios.setID(String.valueOf(id).toString().trim());
-                studios.setLocation(spLocation.getSelectedItem().toString());
-                studios.setName(edtStudioName.getText().toString().trim());
-                studios.setTimeOpen(edtTimeOpen.getText().toString().trim());
-                studios.setTimeClose(edtTimeClose.getText().toString().trim());
-
-                uploadeFile();
-
-//                if (cb1.isChecked()) {
-//
-//                } else {
-//                    studios.setCbAir(cb1);
-//                    reference.child(String.valueOf(id)).child("conveniences").setValue(studios);
-//                }
-//                if (cb2.isChecked()) {
-//                    studios.setCbSpeaker(cb2);
-//                    reference.child(String.valueOf(id)).child("conveniences").setValue(studios);
-//                } else {
-//
-//                }
-//                if (cb3.isChecked()) {
-//                    studios.setCbToilet(cb3);
-//                    reference.child(String.valueOf(id)).child("conveniences").setValue(studios);
-//                } else {
-//
-//                }
-//
-//                if (cb4.isChecked()) {
-//                    studios.setCbInternet(cb4);
-//                    reference.child(String.valueOf(id)).child("conveniences").setValue(studios);
-//                } else {
-//
-//                }
-//
-//                if (cb5.isChecked()) {
-//                    studios.setCbCarpark(cb5);
-//                    reference.child(String.valueOf(id)).child("conveniences").setValue(studios);
-//                } else {
-//
-//                }
-//
-//                if (cb6.isChecked()) {
-//                    studios.setCbOther(cb6);
-//                    reference.child(String.valueOf(id)).child("conveniences").setValue(studios);
-//                }
-
-                
-                Toast.makeText(PartnerRegisterStudioActivity.this,"บันทึกข้อมูลสตูดิโอแล้ว!",Toast.LENGTH_LONG).show();
-                reference.child(String.valueOf(id)).setValue(studios);
-
-                Intent intentOtp = new Intent(getApplicationContext(), PartnerRegisterOtpActivity.class);
-                startActivity(intentOtp);
-
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int position, long id) {
+                spin_val = gender[position];//saving the value selected
+               // Toast.makeText(getApplicationContext(),gender[position] , Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {//
+                // Toast.makeText(getApplicationContext(),gender[position] , Toast.LENGTH_LONG).show();
             }
         });
+            //setting array adaptors to spinners
+      //ArrayAdapter is a BaseAdapter that is backed by an array of arbitrary objects
+        ArrayAdapter<String> spin_adapter = new ArrayAdapter<String>(PartnerRegisterStudioActivity.this, android.R.layout.simple_spinner_item, gender);
+         // setting adapter to spinner
+        spin.setAdapter(spin_adapter);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//        CategoryName = getIntent().getExtras().get("category").toString();
+        ProductImagesRef = FirebaseStorage.getInstance().getReference().child("image_upload");
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Studios");
+//        sellersRef = FirebaseDatabase.getInstance().getReference().child("Sellers");
+
+
+        text_name = (EditText) findViewById(R.id.text_name);
+        text_location= (EditText) findViewById(R.id.text_location);
+
+
+//        Intent intent = getIntent();
+//        s_orderid = intent.getStringExtra("orderid");
+//        s_orderdate = intent.getStringExtra("orderdate");
+//        s_orderstatus = intent.getStringExtra("orderstatus");
+//        s_ordertotalprice = intent.getStringExtra("ordertotalprice");
+//        s_orderuserupimage = intent.getStringExtra("orderuserupimage");
+//        s_rentuser = intent.getStringExtra("rentuser");
+//
+//        text_orderid.setText("" + s_orderid);
+//        text_orderdate.setText("" + s_orderdate);
+//        text_orderstatus.setText("" + s_orderstatus);
+//        text_ordertotalprice.setText("" + s_ordertotalprice);
+//        text_orderuserupimage.setText("" + s_orderuserupimage);
+//        text_rentuser.setText("" + s_rentuser);
+
+
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    id = (int) snapshot.getChildrenCount();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
+
+        AddNewProductButton = (Button) findViewById(R.id.add_new_product);
+        InputProductImage = (ImageView) findViewById(R.id.select_product_image);
+        loadingBar = new ProgressDialog(this);
+        InputProductImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenGallery();
+            }
+        });
+
+
+        AddNewProductButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ValidateProductData();
+            }
+        });
+
+        Intent intent = new Intent(getApplicationContext(), PartnerManageActivity.class);
+        startActivity(intent);
+
+//        sellersRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+//                            sName = dataSnapshot.child("name").getValue().toString();
+//                            sAddres = dataSnapshot.child("address").getValue().toString();
+//                            sPhone = dataSnapshot.child("phone").getValue().toString();
+//                            sID = dataSnapshot.child("sid").getValue().toString();
+//                            sEmail = dataSnapshot.child("email").getValue().toString();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
     }
-    private void openFileChoose() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,PICK_IMAGE_REQUEST);
+
+
+    private void OpenGallery() {
+        Intent galleryIntent = new Intent();
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent, GalleryPick);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == PICK_IMAGE_REQUEST && requestCode == RESULT_OK && data != null && data.getData() != null) {
-            imageUri = data.getData();
+        if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
+            ImageUri = data.getData();
+            InputProductImage.setImageURI(ImageUri);
 
-//            Picasso.with(this).load(imageUri).into(ivUploadView);
-            Glide.with(this).load(imageUri).into(ivUploadView);
-            ivUploadView.setImageURI(imageUri);
         }
     }
 
-    private String getFileExtension(Uri uri) {
-        ContentResolver contentRes = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(contentRes.getType(uri));
-    }
 
-    private void uploadeFile() {
-        if (imageUri != null) {
-            StorageReference fileReference = storageRef.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-            fileReference.putFile(imageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            progressBar.setProgress(0);
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    progressBar.setProgress(0);
-                                }
-                            },5000);
+    private void ValidateProductData() {
 
-                            Toast.makeText(PartnerRegisterStudioActivity.this, "อัปโหลดแล้ว!",Toast.LENGTH_SHORT).show();
-                            Upload upload = new Upload();
-                            String uploadId = reference.push().getKey();
-                            reference.child(uploadId).setValue(upload);
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(PartnerRegisterStudioActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+       // Price = text_ordertotalprice.getText().toString();
+        Name = text_name.getText().toString();
 
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                            double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                            progressBar.setProgress((int) progress);
-                        }
-                    });
+
+        if (ImageUri == null) {
+            Toast.makeText(this, "input image...", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(Name)) {
+            Toast.makeText(this, "input text...", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this,"ยังไม่ได้เลือกไฟล์",Toast.LENGTH_SHORT).show();
+            StoreProductInformation();
         }
     }
+
+
+    private void StoreProductInformation() {
+        loadingBar.setTitle("เพิ่ม ");
+        loadingBar.setMessage("โปรดรอสักครู่");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
+
+        Calendar calendar = Calendar.getInstance();
+
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate = currentDate.format(calendar.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        saveCurrentTime = currentTime.format(calendar.getTime());
+        productRandomKey = saveCurrentDate + saveCurrentTime;
+
+
+        final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
+        final UploadTask uploadTask = filePath.putFile(ImageUri);
+
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                String message = e.toString();
+                Toast.makeText(PartnerRegisterStudioActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                loadingBar.dismiss();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
+            @Override
+            public void onSuccess(TaskSnapshot taskSnapshot) {
+                Toast.makeText(PartnerRegisterStudioActivity.this, "อัปโหลดรูปภาพ เรียบร้อยแล้ว...", Toast.LENGTH_SHORT).show();
+
+                Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
+
+                        downloadImageUrl = filePath.getDownloadUrl().toString();
+                        return filePath.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            downloadImageUrl = task.getResult().toString();
+
+                            Toast.makeText(PartnerRegisterStudioActivity.this, "get URL...", Toast.LENGTH_SHORT).show();
+                            SaveProductInfoToDatabase();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
+    private void SaveProductInfoToDatabase() {
+        HashMap<String, Object> productMap = new HashMap<>();
+
+        // Getting the ID from firebase database.
+        //String idFromServer = databaseReference_1.push().getKey();
+        String idFromServer = ProductsRef.push().getKey();
+
+        String numberAsString = Integer.toString(maxid+1);
+
+
+
+        //productMap.put("id", String.valueOf(id));
+        productMap.put("id", numberAsString);
+        productMap.put("name", text_name.getText().toString().trim());
+        productMap.put("location", text_location.getText().toString().trim());
+        productMap.put("image", downloadImageUrl);
+        productMap.put("logo", downloadImageUrl);
+        productMap.put("tag", spin_val);
+
+
+       ProductsRef.child(idFromServer).updateChildren(productMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Intent intent = new Intent(Admin_add_product.this, SellerHomeActivity.class);
+                            // Intent intent = new Intent(Page_user_my_order_upload.this, Admin_product.class);
+                            // startActivity(intent);
+
+                            loadingBar.dismiss();
+                            Toast.makeText(PartnerRegisterStudioActivity.this, "บันทึกข้อมูลสตูดิโอแล้ว", Toast.LENGTH_SHORT).show();
+                        } else {
+                            loadingBar.dismiss();
+                            String message = task.getException().toString();
+                            Toast.makeText(PartnerRegisterStudioActivity.this, "มีข้อผิดพลาด: " + message, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
 }
+

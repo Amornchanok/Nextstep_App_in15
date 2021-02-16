@@ -22,10 +22,10 @@ public class NotiPartnerModeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-//                    case R.id.homePartnerMode:
-//                        startActivity(new Intent(getApplicationContext(), NotiPartnerModeActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+                    case R.id.homePartnerMode:
+                        startActivity(new Intent(getApplicationContext(), HomePartnerActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
                     case R.id.notiPartnerMode:
                         return true;
                     case R.id.bookingPartnerMode:

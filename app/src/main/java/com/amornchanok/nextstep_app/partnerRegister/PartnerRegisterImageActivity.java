@@ -68,7 +68,7 @@ public class PartnerRegisterImageActivity extends AppCompatActivity {
 //                databaseReference = reference.child(auth.getCurrentUser().getUid());
 //                databaseReference.child(auth.getCurrentUser().getUid()).child("userType").setValue("isPartner");
 
-                Intent intent = new Intent(PartnerRegisterImageActivity.this, PartnerManageActivity.class);
+                Intent intent = new Intent(PartnerRegisterImageActivity.this, PartnerRegisterStudioActivity.class);
                 startActivity(intent);
             }
 

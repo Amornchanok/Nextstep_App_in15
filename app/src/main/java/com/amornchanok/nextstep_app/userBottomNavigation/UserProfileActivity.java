@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class UserProfileActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
@@ -39,6 +41,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
     String userID,userName,userEmail,userPhone;
     TextView tvUserName;
+    ImageView imageProfile;
     Button btPhone,btMail;
 
 
@@ -148,13 +151,14 @@ public class UserProfileActivity extends AppCompatActivity {
     private  void showData(DataSnapshot snapshot) {
 
         UserInformation uInfo = snapshot.getValue(UserInformation.class);
-
         tvUserName = (TextView) findViewById(R.id.tvUserName);
-        tvUserName.setText(uInfo.getName());
+        tvUserName.setText(uInfo.getName() + " " + " " + uInfo.getLastName());
         btMail = (Button) findViewById(R.id.btMail);
         btMail.setText(uInfo.getEmail());
         btPhone = (Button) findViewById(R.id.btPhone);
         btPhone.setText(uInfo.getPhone());
+        imageProfile = (ImageView) findViewById(R.id.imageProfile);
+        Picasso.get().load(uInfo.getImageProfile()).into(imageProfile);
 
     }
 

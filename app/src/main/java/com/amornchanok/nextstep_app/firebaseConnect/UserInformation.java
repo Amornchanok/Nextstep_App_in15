@@ -6,6 +6,7 @@ public class UserInformation {
     private String email;
     private String phone;
     private String UserType;
+    private String imageProfile;
 
     public String getName() {
         return name;
@@ -37,4 +38,7 @@ public class UserInformation {
 
     public String getUserType() { return UserType; }
     public void setUserType(String userType) { this.UserType = userType; }
+
+    public String getImageProfile() { return imageProfile; }
+    public void setImageProfile(String imageProfile) { this.imageProfile = imageProfile; }
 }

@@ -22,7 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 public class StudioListActivity extends AppCompatActivity {
@@ -74,7 +73,6 @@ public class StudioListActivity extends AppCompatActivity {
 
                     }
                 });
-
             }
 
             @NonNull
@@ -88,8 +86,8 @@ public class StudioListActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         recycleView.setLayoutManager(gridLayoutManager);
         recycleView.setAdapter(adapter);
-
     }
+
     @Override
     protected void onStart() {
         super.onStart();

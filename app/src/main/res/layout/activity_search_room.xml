@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".searchStudio.SearchRoomActivity">
+    tools:context=".searchStudio.SearchStudioActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +61,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnLoction"
+            android:id="@+id/btnLocation"
             android:gravity="left"
             android:drawableLeft="@drawable/ic_outline_location_on_30"
             android:paddingTop="20dp"
@@ -81,7 +81,6 @@
             android:id="@+id/btnDate"
             android:gravity="left"
             android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-            android:fontFamily="@font/db_adman_x"
             android:paddingTop="20dp"
             android:textSize="20dp"
             android:hint="  วันที่"

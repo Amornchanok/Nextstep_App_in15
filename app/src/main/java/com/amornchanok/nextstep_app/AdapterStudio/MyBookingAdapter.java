@@ -1,11 +1,8 @@
-package com.amornchanok.nextstep_app;
+package com.amornchanok.nextstep_app.AdapterStudio;
 
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.firebaseConnect.MyBooking;
 import com.squareup.picasso.Picasso;
 
@@ -44,7 +42,6 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
         holder.text_time.setText(uploadList.get(position).getTime());
 
         Picasso.get().load(uploadList.get(position).getRoom_img()).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(holder.imageView);
-
 
     }
 

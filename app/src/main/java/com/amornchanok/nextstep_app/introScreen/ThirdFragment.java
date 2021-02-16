@@ -45,7 +45,7 @@ public class ThirdFragment extends Fragment {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(),HomeActivity.class);
+                Intent intent = new Intent( getActivity(), HomeActivity.class);
                 startActivity(intent);
 //                Toast.makeText(getActivity(),"DONE", Toast.LENGTH_LONG).show();
 

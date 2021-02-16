@@ -1,9 +1,10 @@
 package com.amornchanok.nextstep_app.firebaseConnect;
 
 public class Studios {
+    private static String Image;
     private String ID;
     private String Name;
-    private String Image;
+//    private String Image;
     private String Logo;
     private String Location;
     private String TimeOpen;
@@ -28,7 +29,7 @@ public class Studios {
         this.TimeClose = TimeClose;
     }
 
-    public String getImage() {
+    public static String getImage() {
         return Image;
     }
     public void setImage(String Image) {

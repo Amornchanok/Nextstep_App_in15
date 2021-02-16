@@ -8,6 +8,7 @@ public class Booking {
     private String room_id;
     private String room_name;
     private String room_img;
+    private String room_price;
     private String user_id;
 
     public Booking() { }
@@ -59,5 +60,12 @@ public class Booking {
         Time = time;
     }
 
+    public String getRoom_price() {
+        return room_price;
+    }
+
+    public void setRoom_price(String room_price) {
+        this.room_price = room_price;
+    }
 }
 

@@ -1,5 +1,4 @@
 package com.amornchanok.nextstep_app;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amornchanok.nextstep_app.firebaseConnect.Rooms;
 import com.amornchanok.nextstep_app.ViewHolder.RoomViewHolder;
+import com.amornchanok.nextstep_app.firebaseConnect.Studios;
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -28,7 +28,6 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 public class StudioProfileRoomListActivity extends AppCompatActivity {
-
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseRef;
     FirebaseDatabase firebaseDatabase;
@@ -84,11 +83,11 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
         Picasso.get().load("" + studioImg).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(imgPreview);
         Picasso.get().load("" + studioLogo).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(imgLogo);
 
- // RoomList
+        // RoomList
 
         if (getIntent() != null)
 
-        Studio_id = getIntent().getStringExtra("studioId");
+            Studio_id = getIntent().getStringExtra("studioId");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Rooms").orderByChild("StudioId").equalTo(Studio_id);
         optionsrooms = new FirebaseRecyclerOptions.Builder<Rooms>().setQuery(databaseReference, Rooms.class).build();
 
@@ -101,7 +100,7 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
                 @Override
                 protected void onBindViewHolder(RoomViewHolder holder, int position, final Rooms model) {
                     holder.roomName.setText(model.getName());
-                    holder.roomPrice.setText(model.getPrice() + "บาท/ชั่วโมง");
+                    holder.roomPrice.setText(model.getPrice() + " บาท / ชั่วโมง ");
                     holder.roomCapacity.setText(model.getCapacity());
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -109,7 +108,7 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
                             //Intent i=new Intent(Page_room_list.this,Page_room_detail.class);
                             Intent i=new Intent(StudioProfileRoomListActivity.this, RoomDetailActivity.class);
 
-                            i.putExtra("Studio_id",Studio_id);
+                            i.putExtra("Studio_Name",model.getName());
                             i.putExtra("roomId",model.getID());
                             i.putExtra("roomPrice",model.getPrice());
                             i.putExtra("roomName",model.getName());
@@ -139,7 +138,7 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
                 }
             };
 
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
             recyclerView.setLayoutManager(gridLayoutManager);
             recyclerView.setAdapter(adapter);
 

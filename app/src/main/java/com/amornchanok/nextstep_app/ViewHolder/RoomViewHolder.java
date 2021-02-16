@@ -27,8 +27,4 @@ public class RoomViewHolder extends RecyclerView.ViewHolder  {
 
     }
 
-
-
-
-
 }
