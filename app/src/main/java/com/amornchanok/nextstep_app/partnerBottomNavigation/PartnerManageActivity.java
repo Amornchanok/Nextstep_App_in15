@@ -11,12 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.amornchanok.nextstep_app.PartnerAddRoomActivity;
 import com.amornchanok.nextstep_app.PartnerBusinessManageActivity;
+import com.amornchanok.nextstep_app.PartnerCheckQueueActivity;
 import com.amornchanok.nextstep_app.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PartnerManageActivity extends AppCompatActivity {
 
-    Button btManageBusiness;
+    Button btManageBusiness,btBookingFromUser;
     Button btAddRoom;
 
     @Override
@@ -25,6 +26,15 @@ public class PartnerManageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_partner_manage);
 
         btAddRoom = findViewById(R.id.btAddRoom);
+        btBookingFromUser  = findViewById(R.id.btBookingFromUser);
+
+        btBookingFromUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PartnerManageActivity.this, PartnerCheckQueueActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btAddRoom.setOnClickListener(new View.OnClickListener() {
             @Override

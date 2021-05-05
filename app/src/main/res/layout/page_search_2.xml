@@ -66,27 +66,15 @@
                 android:layout_height="1dp"
                 android:background="@color/gray"/>
 
-            <Button
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnDate"
                 android:gravity="left"
                 android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-                android:fontFamily="@font/db_adman_x"
                 android:paddingTop="20dp"
                 android:textSize="20dp"
-                android:hint="  วันที่"
-                android:background="?android:attr/selectableItemBackground" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray"/>
+                android:hint="  วันที่"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -95,7 +83,8 @@
                 android:textSize="20dp"
                 android:hint="  จำนวนคน"
                 android:id="@+id/edtPersons"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
 

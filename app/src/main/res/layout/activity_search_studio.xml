@@ -74,35 +74,30 @@
                 android:layout_height="1dp"
                 android:background="@color/gray"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnDate"
-                android:gravity="left"
-                android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-                android:fontFamily="@font/db_adman_x"
-                android:paddingTop="20dp"
-                android:textSize="20dp"
-                android:hint="  วันที่"
-                android:background="?android:attr/selectableItemBackground"
-                tools:ignore="MissingConstraints" />
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/btnDate"-->
+<!--                android:gravity="left"-->
+<!--                android:drawableLeft="@drawable/ic_baseline_calendar_today_24"-->
+<!--                android:paddingTop="20dp"-->
+<!--                android:textSize="20dp"-->
+<!--                android:hint="  วันที่" />-->
+
+<!--            <EditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:drawableLeft="@drawable/ic_baseline_calendar_today_24"-->
+<!--                android:textSize="20dp"-->
+<!--                android:hint="  วันที่"-->
+<!--                android:id="@+id/edtDate"/>-->
+
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/gray"/>
 
-<!--                    <Button-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/btnTime"-->
-<!--                        android:gravity="left"-->
-<!--                        android:drawableLeft="@drawable/icon_search_lct03"-->
-<!--                        android:fontFamily="@font/db_adman_x"-->
-<!--                        android:paddingTop="20dp"-->
-<!--                        android:textSize="20dp"-->
-<!--                        android:background="?android:attr/selectableItemBackground"-->
-<!--                        android:hint="  เวลา"/>-->
 
             <View
                 android:layout_width="match_parent"
@@ -117,6 +112,7 @@
                 android:hint="  จำนวนคน"
                 android:id="@+id/edtPersons"
                 android:inputType="number"/>
+
 
         </LinearLayout>
 
@@ -133,6 +129,7 @@
         android:textSize="22dp"
         android:background="@drawable/gradient_button">
     </Button>
+
 
 
 </LinearLayout>

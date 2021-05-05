@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PartnerBusinessManageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/topbar"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="-75dp"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:id="@+id/btnAllStudio"
+            android:layout_gravity="left"
+            android:drawableLeft="@drawable/ic_back_40"
+            android:textSize="20dp"
+            android:text=" ตัวเลือกปรับแต่งการบริการ"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_check_circle_20"
+                android:text=" Hot Deal เมื่อคุณถูกยกเลิก เราโปรโมทให้ทันที"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+            
+            <View
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:background="@drawable/hotdeal"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="เมื่อคุณถูกยกเลิก เราจะโปรโมทช่วงเวลาที่เสียไปของคุณ"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ให้ได้ลูกค้ากลับคืน สมัครเป็นเมมเบอร์ hot deal เลย!"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:gravity="center"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ปรับแต่งเลย!"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:background="@drawable/gradient_button_orange"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_check_circle_20"
+                android:text=" ขึ้นหมวดแนะนำในหน้าแรกและหน้าการค้นหา"
+                android:textSize="20dp"
+                android:textColor="@color/black" />
+            <View
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:background="@drawable/tag"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="เพิ่มความโดดเด่นให้สตูดิโอของคุณด้วยหมวดแนะนำในหน้าแรก"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="และรับป้ายบนตัวเลือกสตูดิโอให้ผู้ใช้งานสะดุดตาจนต้องกดเข้ามา"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:gravity="center"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ปรับแต่งเลย!"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:background="@drawable/gradient_button_orange"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_check_circle_20"
+                android:text=" โฆษณาบนเฮดเดอร์หน้าแรก หน้าบอร์ด"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+            <View
+                android:layout_width="170dp"
+                android:layout_height="100dp"
+                android:background="@drawable/ads"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="โฆษณาเด่น ๆ ให้ผู้ใช้งานได้เห็นสตูดิโออันน่าใช้งานของคุณ"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ในหน้าแรกและหน้าบอร์ดพูดคุย"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:gravity="center"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ปรับแต่งเลย!"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:background="@drawable/gradient_button_orange"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

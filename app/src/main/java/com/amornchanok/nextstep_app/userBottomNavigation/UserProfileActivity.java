@@ -12,11 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amornchanok.nextstep_app.MyApplication;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.firebaseConnect.UserInformation;
 import com.amornchanok.nextstep_app.partnerRegister.PartnerConditionActivity;
+import com.amornchanok.nextstep_app.userRegister.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,6 +53,12 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        if(MyApplication.userId.equals("")){
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra(LoginActivity.IS_ANOTHER_WAY,true);
+            startActivityForResult(intent,LoginActivity.CODE_LOGIN);
+        }
+
 
         BottomNavigationView bottomBar = findViewById(R.id.bottomBar);
         bottomBar.setSelectedItemId(R.id.profile);
@@ -75,6 +84,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
+
 
 //        Button b_next_1 = (Button) findViewById(R.id.b_next_1);
 //        b_next_1.setOnClickListener(new View.OnClickListener() {
@@ -162,4 +172,11 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( requestCode == LoginActivity.CODE_LOGIN && requestCode == RESULT_OK){
+        }
+    }
 }

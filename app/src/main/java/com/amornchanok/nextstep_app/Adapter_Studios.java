@@ -54,29 +54,6 @@ public class Adapter_Studios extends RecyclerView.Adapter<Adapter_Studios.ViewHo
         holder.logo.setText(blog.getLogo());
         holder.text_image.setText(blog.getImage());
 
-
-      //  java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
-       // String formattedDate = dateFormat.format(new Date(Long.valueOf(blog.getTimestamp())).getTime());
-
-
-       // holder.timestamp.setText(formattedDate);
-
-        //Glide.with(context)
-        //        .load(Uri.parse(blog.getImage()))
-        //        .into(holder.image);
-
-
-        // holder.image.setImageURI(Uri.parse(blog.getImage()));
-        //holder.mItem = mValues.get(position);
-
-        // imageUrl = blog.getImage();
-
-
-        /*
-        //Picasso.with(context)
-          //      .load(imageUrl)
-            //    .into(holder.image);*/
-
         Picasso.get().load(blog.getImage()).into(holder.image);
 
         // holder.b_click = (Button) findViewById(R.id.b_click);
@@ -95,6 +72,7 @@ public class Adapter_Studios extends RecyclerView.Adapter<Adapter_Studios.ViewHo
 //                context.startActivity(intent);
 //            }
 //        });
+
 //        b_click = (Button) view.findViewById(R.id.b_click);
 //        b_click.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -174,15 +152,13 @@ public class Adapter_Studios extends RecyclerView.Adapter<Adapter_Studios.ViewHo
                 public void onClick(View v) {
                     // we can go to the next activity...
 
-
                     Intent intent = new Intent(context, StudioProfileRoomListActivity.class);
 
                     intent.putExtra("studioId", id.getText().toString().trim());
-                    intent.putExtra("stdName", name.getText().toString().trim());
+                    intent.putExtra("studioName", name.getText().toString().trim());
                     intent.putExtra("stdLocation",location.getText().toString().trim());
                     intent.putExtra("imageLogo", logo.getText().toString().trim());
                     intent.putExtra("imagePreview", text_image.getText().toString().trim());
-                    //intent.putExtra("title", title.getText().toString().trim());
 
                     context.startActivity(intent);
 

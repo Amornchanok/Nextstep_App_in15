@@ -1,16 +1,21 @@
 package com.amornchanok.nextstep_app.userBottomNavigation;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.amornchanok.nextstep_app.Adapter_Studios;
+import com.amornchanok.nextstep_app.ContestListActivity;
 import com.amornchanok.nextstep_app.Model_Studios;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.searchStudio.Page_search;
@@ -25,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
-    private Button bt_service1;
+    private Button bt_service1,bt_service2;
     private RecyclerView recyclerView_3;
     private RecyclerView.Adapter adapter_3;
     private RecyclerView.LayoutManager layoutManager_3;
@@ -34,18 +39,32 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter_2;
     private RecyclerView.LayoutManager layoutManager_2;
    ArrayList<Model_Studios> bloglist_2;
-
+    Dialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
+        myDialog = new Dialog(this);
+        ShowPopup();
+
         bt_service1 = (Button) findViewById(R.id.bt_service1);
         bt_service1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openSearchroom();
+            }
+        });
+
+
+        bt_service2 = (Button) findViewById(R.id.bt_service2);
+        bt_service2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSearchcontest();
             }
         });
 
@@ -90,13 +109,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         bloglist_2 = new ArrayList<>();
-        // DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Studios");
-        // DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Studios").child("tag");
-        //database.getReference("Messages").child(roomID).child(msgID).child("status").setValue("delivered");
-        //  mDatabase.getReference().child("Studios").child("tag").setValue("promotion");
-        // mUserCompounds.orderByChild("status").equalTo("NOT OK").addChildEventListener(new ChildEventListener() {
-
-
         Query ref_2 = FirebaseDatabase.getInstance().getReference().child("Studios").orderByChild("tag").equalTo("suggest");
 
         //////////////////////////////////////////////////////////////////////////                                                                          }
@@ -121,6 +133,20 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    private void ShowPopup() {
+        TextView tvClose;
+        myDialog.setContentView(R.layout.activity_popup_hotdeal);
+        tvClose = (TextView) myDialog.findViewById(R.id.tvClose);
+        //Button = (Button) myDialog.findViewById(R.id)
+        tvClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
 
 
     private void initializeRecyclerView_3() {
@@ -149,9 +175,6 @@ public class HomeActivity extends AppCompatActivity {
 
             //Get user map
             Map singlePost = (Map) entry.getValue();
-            //Get phone field and append to list
-            // String title = singlePost.get("title");
-            //  phoneNumbers.add((Long) singleUser.get("phone"));
             Model_Studios blog = new Model_Studios();
             blog.setId(singlePost.get("id").toString());
             blog.setImage(singlePost.get("image").toString());
@@ -174,9 +197,6 @@ public class HomeActivity extends AppCompatActivity {
 
             //Get user map
             Map singlePost = (Map) entry.getValue();
-            //Get phone field and append to list
-            // String title = singlePost.get("title");
-            //  phoneNumbers.add((Long) singleUser.get("phone"));
             Model_Studios blog = new Model_Studios();
             blog.setId(singlePost.get("id").toString());
             blog.setImage(singlePost.get("image").toString());
@@ -198,5 +218,26 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeActivity.this, Page_search.class);
         startActivity(intent);
     }
+
+    public void openSearchcontest() {
+        Intent i = new Intent(HomeActivity.this, ContestListActivity.class);
+        startActivity(i);
+    }
+
+    public void ShowPopup (View v) {
+        TextView tvClose;
+        myDialog.setContentView(R.layout.activity_popup_hotdeal);
+        tvClose = (TextView) myDialog.findViewById(R.id.tvClose);
+        //Button = (Button) myDialog.findViewById(R.id)
+        tvClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
 }
 

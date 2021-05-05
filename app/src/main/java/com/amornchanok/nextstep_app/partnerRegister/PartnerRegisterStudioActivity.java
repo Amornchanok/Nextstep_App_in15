@@ -1,11 +1,16 @@
 package com.amornchanok.nextstep_app.partnerRegister;
 
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,8 +24,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amornchanok.nextstep_app.Model_Studios;
+import com.amornchanok.nextstep_app.PaymentActivity;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.partnerBottomNavigation.PartnerManageActivity;
+import com.amornchanok.nextstep_app.userBottomNavigation.BookingActivity;
+import com.amornchanok.nextstep_app.userBottomNavigation.NotiActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,11 +47,12 @@ import com.google.firebase.storage.UploadTask.TaskSnapshot;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Timer;
 
 
 public class PartnerRegisterStudioActivity extends AppCompatActivity {
     private String Price, Name, saveCurrentDate, saveCurrentTime;
-    private Button AddNewProductButton;
+    private Button AddNewProductButton, btnOK;
     private ImageView InputProductImage;
     private EditText InputProductName, InputProductDescription, InputProductPrice;
     private static final int GalleryPick = 1;
@@ -53,7 +62,7 @@ public class PartnerRegisterStudioActivity extends AppCompatActivity {
     private DatabaseReference ProductsRef, sellersRef;
     private ProgressDialog loadingBar;
 
-
+    Timer timer;
     String CategoryName = "1";
     String sID = "1";
     String sName = "1";
@@ -89,7 +98,7 @@ public class PartnerRegisterStudioActivity extends AppCompatActivity {
 
     String[] gender = { "promotion", "suggest" };
     //array of strings used to populate the spinner
-EditText text_name;
+    EditText text_name;
     EditText text_location;
 
    // FirebaseDatabase database;
@@ -103,13 +112,14 @@ EditText text_name;
     int maxid = 0;
     Model_Studios member;
     Button btn;
+    Dialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_register_studio);
 
-
+        myDialog = new Dialog(this);
         member = new Model_Studios();
         ref = database.getInstance().getReference().child("Studios");
 
@@ -132,7 +142,7 @@ EditText text_name;
             }
         });
 
-////////////////////////////////////////////////////////////////////////////////////////////
+
         spin = (Spinner) findViewById(R.id.spinner);//fetching view’s id
            //Register a callback to be invoked when an item in this AdapterView has been selected
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -147,10 +157,8 @@ EditText text_name;
                 // Toast.makeText(getApplicationContext(),gender[position] , Toast.LENGTH_LONG).show();
             }
         });
-            //setting array adaptors to spinners
-      //ArrayAdapter is a BaseAdapter that is backed by an array of arbitrary objects
+
         ArrayAdapter<String> spin_adapter = new ArrayAdapter<String>(PartnerRegisterStudioActivity.this, android.R.layout.simple_spinner_item, gender);
-         // setting adapter to spinner
         spin.setAdapter(spin_adapter);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,8 +204,6 @@ EditText text_name;
 //            }
 //        });
 
-
-
         AddNewProductButton = (Button) findViewById(R.id.add_new_product);
         InputProductImage = (ImageView) findViewById(R.id.select_product_image);
         loadingBar = new ProgressDialog(this);
@@ -207,17 +213,17 @@ EditText text_name;
                 OpenGallery();
             }
         });
-
-
         AddNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ValidateProductData();
+                ShowPopup();
             }
         });
 
-        Intent intent = new Intent(getApplicationContext(), PartnerManageActivity.class);
-        startActivity(intent);
+
+//        Intent intent = new Intent(getApplicationContext(), PartnerManageActivity.class);
+//        startActivity(intent);
 
 //        sellersRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
 //                .addValueEventListener(new ValueEventListener() {
@@ -238,6 +244,36 @@ EditText text_name;
 //                    }
 //                });
     }
+//
+//    private void ShowPopup() {
+//        LayoutInflater myInflater = LayoutInflater.from(this);
+//        View view = myInflater.inflate(R.layout.activity_popup_register_studio, null);
+//        Toast mytoast = new Toast(this);
+//        mytoast.setView(view);
+//        mytoast.setDuration(Toast.LENGTH_LONG);
+//        mytoast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+//        mytoast.show();
+//    }
+
+    private void ShowPopup() {
+        myDialog.setContentView(R.layout.activity_popup_noti_studio_register);
+        btnOK = (Button) myDialog.findViewById(R.id.btnBooking);
+        //Button = (Button) myDialog.findViewById(R.id)
+        btnOK.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent partnerMode = new Intent(PartnerRegisterStudioActivity.this, NotiActivity.class);
+                startActivity(partnerMode);
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
+
+
+
 
 
     private void OpenGallery() {
@@ -267,9 +303,9 @@ EditText text_name;
 
 
         if (ImageUri == null) {
-            Toast.makeText(this, "input image...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณาใส่รูปภาพ...", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(Name)) {
-            Toast.makeText(this, "input text...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณากรอกข้อความ...", Toast.LENGTH_SHORT).show();
         } else {
             StoreProductInformation();
         }
@@ -277,10 +313,10 @@ EditText text_name;
 
 
     private void StoreProductInformation() {
-        loadingBar.setTitle("เพิ่ม ");
-        loadingBar.setMessage("โปรดรอสักครู่");
-        loadingBar.setCanceledOnTouchOutside(false);
-        loadingBar.show();
+//        loadingBar.setTitle("เพิ่ม");
+        loadingBar.setMessage("กำลังเพิ่มข้อมูลสตูดิโอ");
+//        loadingBar.setCanceledOnTouchOutside(false);
+//        loadingBar.show();
 
         Calendar calendar = Calendar.getInstance();
 
@@ -306,7 +342,7 @@ EditText text_name;
         }).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
             @Override
             public void onSuccess(TaskSnapshot taskSnapshot) {
-                Toast.makeText(PartnerRegisterStudioActivity.this, "อัปโหลดรูปภาพ เรียบร้อยแล้ว...", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(PartnerRegisterStudioActivity.this, "อัปโหลดรูปภาพ เรียบร้อยแล้ว...", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -324,8 +360,8 @@ EditText text_name;
                         if (task.isSuccessful()) {
                             downloadImageUrl = task.getResult().toString();
 
-                            Toast.makeText(PartnerRegisterStudioActivity.this, "get URL...", Toast.LENGTH_SHORT).show();
-                            SaveProductInfoToDatabase();
+//                            Toast.makeText(PartnerRegisterStudioActivity.this, "get URL...", Toast.LENGTH_SHORT).show();
+//                            SaveProductInfoToDatabase();
                         }
                     }
                 });
@@ -364,7 +400,7 @@ EditText text_name;
                             // startActivity(intent);
 
                             loadingBar.dismiss();
-                            Toast.makeText(PartnerRegisterStudioActivity.this, "บันทึกข้อมูลสตูดิโอแล้ว", Toast.LENGTH_SHORT).show();
+                            ShowPopup();
                         } else {
                             loadingBar.dismiss();
                             String message = task.getException().toString();

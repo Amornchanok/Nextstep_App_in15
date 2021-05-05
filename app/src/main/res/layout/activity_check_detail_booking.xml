@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvStudioName"
-                android:text="Studio Name"
+                android:text="Dance+ Studio"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:textColor="@color/black"

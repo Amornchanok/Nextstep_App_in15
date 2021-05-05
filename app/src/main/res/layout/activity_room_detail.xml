@@ -111,7 +111,8 @@
                     android:textColor="@color/black"
                     android:gravity="right"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="3"/>
+                    android:layout_weight="3"
+                    android:textSize="20dp"/>
 
                 <TextView
                     android:layout_width="50dp"
@@ -121,7 +122,8 @@
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:background="@color/purple"
-                    android:layout_weight="0.5"/>
+                    android:layout_weight="0.5"
+                    android:textSize="20dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -130,7 +132,8 @@
                     android:textColor="@color/black"
                     android:gravity="left"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="3"/>
+                    android:layout_weight="3"
+                    android:textSize="20dp"/>
 
             </LinearLayout>
 
@@ -167,7 +170,7 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:background="@color/purple"
+                    android:background="@color/gray"
                     android:layout_weight="1"/>
 
 
@@ -245,14 +248,13 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:background="@color/purple"
+                    android:background="@color/gray"
                     android:layout_weight="1"/>
 
 
             </LinearLayout>
 
             /////////////////////////////////////////
-
 
             <!--แถบสเตตัส-->
 
@@ -272,6 +274,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="18.00"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -282,7 +285,7 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:background="@color/purple"
+                    android:background="@color/gray"
                     android:layout_weight="1"/>
 
 

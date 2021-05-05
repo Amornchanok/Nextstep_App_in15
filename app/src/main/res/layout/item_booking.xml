@@ -25,7 +25,6 @@
             android:layout_height="wrap_content"
             android:text="Studio Name"
             android:id="@+id/cardTextViewId"
-            android:fontFamily="@font/db_adman_x"
             android:textSize="25dp"
             android:textColor="@color/black"
             android:layout_marginRight="25dp"

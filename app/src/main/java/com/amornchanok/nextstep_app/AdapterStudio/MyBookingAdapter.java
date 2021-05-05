@@ -1,18 +1,25 @@
 package com.amornchanok.nextstep_app.AdapterStudio;
 
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amornchanok.nextstep_app.PaymentActivity;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.firebaseConnect.MyBooking;
+import com.amornchanok.nextstep_app.userBottomNavigation.BookingActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,11 +28,14 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
     private Context context;
     private List<MyBooking> uploadList;
     private onItemClickListener listener;
+    Dialog myDialog;
 
     public MyBookingAdapter(Context context, List<MyBooking> uploadList) {
         this.context = context;
         this.uploadList = uploadList;
     }
+
+
 
     @NonNull
     @Override
@@ -55,6 +65,8 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
         TextView nameTextView;
         TextView text_date;
         TextView text_time;
+        Button btnDelete;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +75,31 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
             nameTextView = itemView.findViewById(R.id.cardTextViewId);
             text_date = itemView.findViewById(R.id.text_date);
             text_time = itemView.findViewById(R.id.text_time);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
+            myDialog = new Dialog(context);
+
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    ShowPopup();
+                    myDialog.setContentView(R.layout.activity_popup_delete_booking);
+                    btnDelete = (Button) myDialog.findViewById(R.id.btnDelete);
+                    //Button = (Button) myDialog.findViewById(R.id)
+                    btnDelete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+//                            Intent partnerMode = new Intent(context, BookingActivity.class);
+//                            context.startActivity(partnerMode);
+
+//                            Intent myIntent1 = new Intent(this, B.class);
+//                            myIntent1.putExtra("layout", R.layout.myLayout);
+//                            startActivity(myIntent1);
+                        }
+                    });
+                    myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    myDialog.show();
+                }
+            });
 
             itemView.setOnClickListener(this);
 //            itemView.setOnCreateContextMenuListener(this);
@@ -106,6 +143,21 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.MyVi
 //            return false;
 //        }
     }
+
+//    private void ShowPopup() {
+//        myDialog.setContentView(R.layout.activity_popup_delete_booking);
+//        btnDelete = (Button) myDialog.findViewById(R.id.btnDelete);
+//        //Button = (Button) myDialog.findViewById(R.id)
+//        btnDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent partnerMode = new Intent(context, BookingActivity.class);
+//                startActivity(partnerMode);
+//            }
+//        });
+//        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        myDialog.show();
+//    }
 
     public  interface onItemClickListener{
         void onItemClick(int position);

@@ -5,15 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@drawable/topbar"
-        android:layout_alignParentTop="true"/>
-    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:background="@drawable/topbar"-->
+<!--        android:layout_alignParentTop="true"/>-->
+<!--    </RelativeLayout>-->
 
 <!--    <ScrollView-->
 <!--        android:layout_width="match_parent"-->
@@ -122,12 +122,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_weight="1.2">
 
                     <TextView
                         android:id="@+id/tvStdRating"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/rounded_score"
@@ -135,10 +134,10 @@
                         android:gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="4.5"
+                        android:text="4.5 (112)"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="15.5dp" />
 
                 </LinearLayout>
 
@@ -252,6 +251,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:paddingRight="5dp"
+                            android:drawableTop="@drawable/ic_round_air_24"
                             android:text="แอร์"
                             android:textColor="@color/purple"
                             android:textSize="20dp" />
@@ -263,7 +263,20 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:paddingRight="5dp"
-                            android:text="อินเทอร์เน็ต"
+                            android:drawableTop="@drawable/ic_round_wifi_24"
+                            android:text="เน็ต"
+                            android:textColor="@color/purple"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/tvStdConvenientList4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingRight="5dp"
+                            android:drawableTop="@drawable/ic_outline_speaker_24"
+                            android:text="ลำโพง"
                             android:textColor="@color/purple"
                             android:textSize="20dp" />
 
@@ -274,7 +287,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:paddingRight="5dp"
-                            android:text="ลำโพง"
+                            android:drawableTop="@drawable/ic_outline_directions_car_filled_24"
+                            android:text="ที่จอดรถ"
                             android:textColor="@color/purple"
                             android:textSize="20dp" />
 

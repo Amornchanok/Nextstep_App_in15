@@ -14,16 +14,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amornchanok.nextstep_app.Model_Studios;
+import com.amornchanok.nextstep_app.MyApplication;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.StudioProfileRoomListActivity;
 import com.amornchanok.nextstep_app.firebaseConnect.Studios;
+import com.amornchanok.nextstep_app.userRegister.LoginActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
 
 public class AdapterRent extends RecyclerView.Adapter<AdapterRent.ViewHolder> {
     private EditText mSearchFeild;
@@ -65,7 +70,7 @@ public class AdapterRent extends RecyclerView.Adapter<AdapterRent.ViewHolder> {
             imageURL = (TextView) itemView.findViewById(R.id.imageurl);
 
             imageStudio = (ImageView) itemView.findViewById(R.id.imageStudio);
-            text_status = (TextView) itemView.findViewById(R.id.text_status);
+            //text_status = (TextView) itemView.findViewById(R.id.text_status);
             b_click = (Button) itemView.findViewById(R.id.b_click);
 
             Picasso.get().load(""+imageURL).into(imageStudio);
@@ -73,13 +78,15 @@ public class AdapterRent extends RecyclerView.Adapter<AdapterRent.ViewHolder> {
             relativeLayout = (RelativeLayout) itemView.findViewById(R.id.parent_layout);
         }
 
-        public void onClick(final int position, final String s) {
+        public void onClick(final int position, final String str) {
             relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    mSearchFeild.setText(s);
-//                    Intent intent = new Intent(context, StudioProfileRoomListActivity.class);
-//                    intent.putExtra("pid", s);
+                    //mSearchFeild.setText(position);
+//                    Intent intent =  new Intent(context, StudioProfileRoomListActivity.class);
+//                    intent.putExtra("pid", arrayList.get(position).getId());
+//                    intent.putExtra("rentname", arrayList.get(position).getName());
+//                    intent.putExtra("renttime", arrayList.get(position).getLocation());
 //                    context.startActivity(intent);
                 }
             });
@@ -94,8 +101,10 @@ public class AdapterRent extends RecyclerView.Adapter<AdapterRent.ViewHolder> {
         return new ViewHolder(view);
     }
 
+
+
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder,int position) {
 
         holder.pid.setText(arrayList.get(position).getId());
         holder.rentname.setText(arrayList.get(position).getName());
@@ -106,45 +115,24 @@ public class AdapterRent extends RecyclerView.Adapter<AdapterRent.ViewHolder> {
         holder.b_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
+                Intent i =  new Intent(context, StudioProfileRoomListActivity.class);
+                i.putExtra("studioId",arrayList.get(position).getId());
+                i.putExtra("studioName", arrayList.get(position).getName());
+                i.putExtra("stdLocation", arrayList.get(position).getLocation());
+                i.putExtra("imageLogo", arrayList.get(position).getLogo());
+                i.putExtra("imagePreview", arrayList.get(position).getImage());
 
-//                Intent intent = new Intent(context, StudioProfileRoomListActivity.class);
-//                intent.putExtra("pid", model.getID());
-//                intent.putExtra("rentname", model.getRentname());
-//                intent.putExtra("renttime", model.getRenttime());
-//                intent.putExtra("image", model.getImage());
-
-
-
-//                intent.putExtra("Place_id", Place_id);
-//                intent.putExtra("Name", Name);
-//                intent.putExtra("Description", Description);
-//                intent.putExtra("Image", Image);
-//                startActivity(intent);
-
-
-//                Intent intent =  new Intent(context, Page_user_rent.class);
-//                Intent intent =  new Intent(context, DialogActivity_1.class);
-//                context.startActivity(intent);
-
-
-//                Intent intent =  new Intent(context, Page_user_rent.class);
-//                Intent intent =  new Intent(context, StudioProfileRoomListActivity.class);
-//                Intent intent = new Intent(context, DialogActivity_1.class);
-//                intent.putExtra("pid", getID);
-//                 intent.putExtra("rentname", s_rentname);
-//                intent.putExtra("renttime", s_renttime);
-//                intent.putExtra("pid", arrayList.get(position).getId());
-//                intent.putExtra("rentname", arrayList.get(position).getName());
-//                intent.putExtra("renttime", arrayList.get(position).getLocation());
-//                context.startActivity(intent);
+                context.startActivity(i);
 
             }
         });
 
-
         holder.onClick(position, arrayList.get(position).getLocation());
 
+
     }
+
 
     @Override
     public int getItemCount() {

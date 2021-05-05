@@ -5,16 +5,18 @@ public class Rooms {
     private String Name;
     private String Image;
     private String StudioId;
+    private String StudioName;
     private String ID;
     private String Price;
 
     public Rooms() { }
 
-    public Rooms(String capacity, String name, String image, String studioId, String id,String price) {
+    public Rooms(String capacity, String name, String image, String studioId,String studioName, String id,String price) {
         Capacity = capacity;
         Name = name;
         Image = image;
         StudioId = studioId;
+        StudioName = studioName;
         ID = id;
         Price = price;
     }
@@ -52,4 +54,12 @@ public class Rooms {
 
     public String getPrice() { return Price; }
     public void setPrice(String price) { this.Price = price; }
+
+    public String getStudioName() {
+        return StudioName;
+    }
+
+    public void setStudioName(String studioName) {
+        StudioName = studioName;
+    }
 }

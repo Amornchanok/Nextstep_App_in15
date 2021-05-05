@@ -22,7 +22,7 @@ public class CheckDetailBookingActivity extends AppCompatActivity {
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(CheckDetailBookingActivity.this, "การจองสำเร็จ! ตรวจสอบการจองได้ที่ การจองของฉัน", Toast.LENGTH_LONG).show();
+                //Toast.makeText(CheckDetailBookingActivity.this, "การจองสำเร็จ! ตรวจสอบการจองได้ที่ การจองของฉัน", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
                 startActivity(intent);
 

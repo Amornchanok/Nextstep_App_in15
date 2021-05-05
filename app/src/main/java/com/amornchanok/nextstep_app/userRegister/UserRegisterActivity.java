@@ -29,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class UserRegisterActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword,inputName,inputLastName;
-    private Button btnSignUp, btnResetPassword;
+    private Button btnSignUp,btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
 
@@ -47,7 +47,7 @@ public class UserRegisterActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        btnSignIn = (Button) findViewById(R.id.sign_in_button);
+        btnSignIn = (Button) findViewById(R.id.btnSignin);
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
@@ -132,8 +132,8 @@ public class UserRegisterActivity extends AppCompatActivity {
                             }
                         });
 
-                Button sign_in_button = (Button) findViewById(R.id.sign_in_button);
-                sign_in_button.setOnClickListener(new View.OnClickListener() {
+                btnSignIn = (Button) findViewById(R.id.btnSignin);
+                btnSignIn.setOnClickListener(new View.OnClickListener() {
 
                     public void onClick(View V) {
 

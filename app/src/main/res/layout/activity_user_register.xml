@@ -133,16 +133,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:textSize="20dp"
                 android:text="ลืมรหัสผ่าน ?"
                 android:textColor="@color/white" />
 
             <!-- Link to Login Screen -->
 
             <Button
-                android:id="@+id/sign_in_button"
+                android:id="@+id/btnSignin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:textSize="20dp"
                 android:text="เป็นสมาชิกอยู่แล้ว เข้าสู่ระบบที่นี่"
                 android:textColor="@color/white" />
         </LinearLayout>

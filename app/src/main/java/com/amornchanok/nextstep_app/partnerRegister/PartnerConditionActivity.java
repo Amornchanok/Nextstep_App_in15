@@ -9,6 +9,7 @@ import android.widget.CompoundButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amornchanok.nextstep_app.PartnerVerifyPhotoActivity;
 import com.amornchanok.nextstep_app.R;
 
 public class PartnerConditionActivity extends AppCompatActivity {
@@ -42,8 +43,9 @@ public class PartnerConditionActivity extends AppCompatActivity {
             }
         });
     }
+
     public void openPartnerRegister() {
-        Intent intentReg = new Intent(PartnerConditionActivity.this, PartnerRegisterImageActivity.class);
+        Intent intentReg = new Intent(PartnerConditionActivity.this, PartnerVerifyPhotoActivity.class);
         startActivity(intentReg);
     }
 }

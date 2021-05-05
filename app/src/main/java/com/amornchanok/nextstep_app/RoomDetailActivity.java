@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.amornchanok.nextstep_app.firebaseConnect.Booking;
 import com.amornchanok.nextstep_app.partnerBottomNavigation.PartnerManageActivity;
+import com.amornchanok.nextstep_app.userRegister.LoginActivity;
 import com.bumptech.glide.signature.ObjectKey;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +48,8 @@ public class RoomDetailActivity extends AppCompatActivity {
     public static final String Firebase_Server_URL = "https://nextstepapp-740cf.firebaseio.com/";
 
     String studioId;
+    String studio_id;
+    String studio_name;
     String room_name;
     String room_image;
     String room_price;
@@ -120,7 +123,6 @@ public class RoomDetailActivity extends AppCompatActivity {
             }
         });
 
-
         Firebase.setAndroidContext(RoomDetailActivity.this);
         firebase = new Firebase(Firebase_Server_URL);
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
@@ -135,19 +137,22 @@ public class RoomDetailActivity extends AppCompatActivity {
         text_url = (TextView) findViewById(R.id.text_url);
 
         Intent intent = getIntent();
+        studio_id = intent.getStringExtra("studioId");
+        studio_name = intent.getStringExtra("studioName");
         room_price= intent.getStringExtra("roomPrice");
         room_name = intent.getStringExtra("roomName");
         room_capacity = intent.getStringExtra("roomCapacity");
         room_imageurl = intent.getStringExtra("roomImage");
 
         text_url.setText("" + room_imageurl);
-        text_name.setText("" + room_name);
+        text_name.setText(studio_name + " " + room_name);
         text_price.setText("" + room_price + " บาท / ชั่วโมง ");
-        text_capacity.setText("" + room_capacity);
+        text_capacity.setText("ความจุ " + "" + room_capacity + " คน");
 
         Picasso.get().load("" + room_imageurl).placeholder(R.mipmap.ic_launcher).fit().centerCrop().into(imageView);
 
-        studioId = getIntent().getStringExtra("Studio_id");
+//      studioId = getIntent().getStringExtra("Studio_id");
+//      studio_name = getIntent().getStringExtra("Studio_name");
         roomId = getIntent().getStringExtra("roomId");
         room_price = getIntent().getStringExtra("roomPrice");
         room_image = getIntent().getStringExtra("roomImage");
@@ -171,35 +176,46 @@ public class RoomDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                int i = Integer.valueOf(room_price);
-                result = status*i;
-                String s = String.valueOf(result);
-                tvResult.setText(s + " บาท");
+//                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
+//
+//                if (user != null) {
+//                    Intent intent=new Intent(RoomDetailActivity.this, LoginActivity.class);
+//                    userID = firebaseUser.getUid();
+//                    startActivity(intent);
+//
+//                }else {
 
-                Booking data_input = new Booking();
-                GetDataFromText();
+                    int i = Integer.valueOf(room_price);
+                    result = status * i;
+                    String s = String.valueOf(result);
+                    tvResult.setText(s + " บาท");
 
-                Calendar calendar = Calendar.getInstance();
-                currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-                SimpleDateFormat format=new SimpleDateFormat("HH:mm:ss");
-                currentTime=format.format(calendar.getTime());
+                    Booking data_input = new Booking();
+                    GetDataFromText();
 
-                data_input.setStudio_id(studioId);
-                data_input.setRoom_id(roomId);
-                data_input.setRoom_id(roomId);
-                data_input.setRoom_name(room_name);
-                data_input.setRoom_img(room_image);
-                data_input.setRoom_price(s);
-                data_input.setUser_id(userID);
-                data_input.setDate(currentDate);
-                data_input.setTime(currentTime);
+                    Calendar calendar = Calendar.getInstance();
+                    currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+                    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                    currentTime = format.format(calendar.getTime());
 
-                String StudentRecordIDFromServer = databaseReference.push().getKey();
-                databaseReference.child(StudentRecordIDFromServer).setValue(data_input);
+                    data_input.setStudio_id(studio_id);
+                    data_input.setStudio_id(studio_name);
+                    data_input.setRoom_id(roomId);
+                    data_input.setRoom_name(room_name);
+                    data_input.setRoom_img(room_image);
+                    data_input.setRoom_price(s);
+                    data_input.setUser_id(userID);
+                    data_input.setDate(currentDate);
+                    data_input.setTime(currentTime);
+
+                    String StudentRecordIDFromServer = databaseReference.push().getKey();
+                    databaseReference.child(StudentRecordIDFromServer).setValue(data_input);
 
 //                Toast.makeText(RoomDetailActivity.this, "การจองสำเร็จ! ตรวจสอบการจองได้ที่ การจองของฉัน", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), CheckDetailBookingActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), CheckDetailBookingActivity.class);
+                    startActivity(intent);
+//                }
 
             }
         });

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
-            android:text="ขั้นตอนที่ 1"
+            android:text="ขั้นตอนที่ 3"
             android:textSize="17dp"
             android:textColor="@android:color/white"/>
 
@@ -40,88 +40,235 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:orientation="vertical">
+        android:layout_height="504dp">
 
-    <EditText
-        android:id="@+id/text_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:hint="ชื่อสตูดิโอ"
-        android:padding="15dp"
-        android:inputType="text"
-        android:background="@drawable/rounded_input"/>
-
-        <ImageView
-            android:id="@+id/select_product_image"
-            android:layout_width="280dp"
-            android:layout_height="120dp"
-            android:background="@drawable/select_image"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center" />
-
-    <EditText
-        android:id="@+id/text_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:ems="15"
-        android:hint="ที่ตั้ง"
-        android:padding="15dp"
-        android:inputType="text"
-        android:background="@drawable/rounded_input"/>
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="เลือกที่ตั้ง"
-                android:textSize="20dp"
-                android:textColor="@android:color/black"
-                android:layout_margin="5dp"
-                android:id="@+id/tvChooseLoc"
-                android:padding="15dp"
-                android:background="@drawable/rounded_input"/>
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="vertical">
 
-            <Spinner
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="250dp"
-                android:id="@+id/spLocation"/>
+                <EditText
+                    android:id="@+id/text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="ชื่อสตูดิโอ"
+                    android:inputType="text"
+                    android:padding="15dp" />
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/select_product_image"
+                    android:layout_width="280dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/select_image" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+                <EditText
+                    android:id="@+id/text_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_input"
+                    android:ems="15"
+                    android:hint="ที่ตั้ง"
+                    android:inputType="text"
+                    android:padding="15dp" />
+
+                <!--        <RelativeLayout-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:orientation="horizontal">-->
+
+                <!--            <TextView-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:hint="เลือกที่ตั้ง"-->
+                <!--                android:textSize="20dp"-->
+                <!--                android:textColor="@android:color/black"-->
+                <!--                android:layout_margin="5dp"-->
+                <!--                android:id="@+id/tvChooseLoc"-->
+                <!--                android:padding="15dp"-->
+                <!--                android:background="@drawable/rounded_input"/>-->
+
+                <!--            <Spinner-->
+                <!--                android:layout_width="50dp"-->
+                <!--                android:layout_height="50dp"-->
+                <!--                android:layout_marginLeft="250dp"-->
+                <!--                android:id="@+id/spLocation"/>-->
+
+                <!--        </RelativeLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/edt_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:padding="15dp"
+                        android:text="สิ่งอำนวยความสะดวก"
+                        android:textColor="@android:color/black"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cbAir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="เครื่องปรับอากาศ"
+                            android:textSize="20dp" />
+
+                        <CheckBox
+                            android:id="@+id/cbSpeaker"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ลำโพง"
+                            android:textSize="20dp" />
+
+                        <CheckBox
+                            android:id="@+id/cbToilet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ห้องน้ำ"
+                            android:textSize="20dp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cbInternet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="อินเทอร์เน็ต"
+                            android:textSize="20dp" />
+
+                        <CheckBox
+                            android:id="@+id/cbCarpark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ที่จอดรถ"
+                            android:textSize="20dp" />
+
+                        <CheckBox
+                            android:id="@+id/cbOther"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="อื่นๆ"
+                            android:textSize="20dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:padding="15dp"
+                        android:text="เวลาเปิด-ปิด บริการ"
+                        android:textColor="@android:color/black"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/edtTimeOpen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_input"
+                        android:hint="เวลาเปิด"
+                        android:padding="15dp"
+                        android:shadowColor="@color/purple"
+                        android:textColor="@android:color/black"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/edtTimeClose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_input"
+                        android:hint="เวลาปิด"
+                        android:padding="15dp"
+                        android:shadowColor="@color/purple"
+                        android:textColor="@android:color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/add_new_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="17dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
         android:text="บันทึก"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18dp"
         android:background="@drawable/gradient_button"/>
-
-    </LinearLayout>
-
 
 </LinearLayout>

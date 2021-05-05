@@ -1,42 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@drawable/topbar"
-        android:layout_marginBottom="10dp"/>
 
     <TextView
+        android:id="@+id/text_user_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="การจองของลูกค้า"
-        android:gravity="center"
+        android:text="text_user_id"
         android:textSize="20dp"
-        android:textColor="@color/purple"
-        android:layout_marginBottom="15dp"/>
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/topbar" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bottomBarPartner"
-            app:itemBackground="@color/white"
-            app:itemTextColor="@drawable/selector"
-            app:itemIconTint="@drawable/selector"
-            app:menu="@menu/partner_bottom_navigation"
-            android:layout_alignParentBottom="true"/>
+            android:layout_marginTop="-65dp"
+            android:gravity="center"
+            android:text="การจองจากลูกค้า"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-    </RelativeLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:visibility="invisible"
+        android:id="@+id/imageProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="526dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- things to scroll -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleviewId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
 
 </LinearLayout>

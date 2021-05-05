@@ -42,6 +42,7 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
 
     String studioId;
     String studioName;
+    String studioNameProfile;
     String studioImg;
     String studioLoc;
     String studioLogo;
@@ -69,7 +70,8 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         studioId = intent.getStringExtra("studioId");
-        studioName = intent.getStringExtra("stdName");
+        studioName = intent.getStringExtra("studioName");
+//        studioName = intent.getStringExtra("stdName");
         studioLoc = intent.getStringExtra("stdLocation");
         studioImg = intent.getStringExtra("imagePreview");
         studioLogo = intent.getStringExtra("imageLogo");
@@ -87,7 +89,7 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
 
         if (getIntent() != null)
 
-            Studio_id = getIntent().getStringExtra("studioId");
+        Studio_id = getIntent().getStringExtra("studioId");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Rooms").orderByChild("StudioId").equalTo(Studio_id);
         optionsrooms = new FirebaseRecyclerOptions.Builder<Rooms>().setQuery(databaseReference, Rooms.class).build();
 
@@ -101,14 +103,14 @@ public class StudioProfileRoomListActivity extends AppCompatActivity {
                 protected void onBindViewHolder(RoomViewHolder holder, int position, final Rooms model) {
                     holder.roomName.setText(model.getName());
                     holder.roomPrice.setText(model.getPrice() + " บาท / ชั่วโมง ");
-                    holder.roomCapacity.setText(model.getCapacity());
+                    holder.roomCapacity.setText("ความจุ " + model.getCapacity() + " คน");
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             //Intent i=new Intent(Page_room_list.this,Page_room_detail.class);
                             Intent i=new Intent(StudioProfileRoomListActivity.this, RoomDetailActivity.class);
-
-                            i.putExtra("Studio_Name",model.getName());
+                            i.putExtra("studioId",model.getStudioId());
+                            i.putExtra("studioName",model.getStudioName());
                             i.putExtra("roomId",model.getID());
                             i.putExtra("roomPrice",model.getPrice());
                             i.putExtra("roomName",model.getName());

@@ -9,20 +9,23 @@ public class Model_Studios {
     public String image;
     public String logo;
     public String tag;
+    public double lat;
+    public double lng;
 
 
     public Model_Studios() {
     }
 
-    public Model_Studios(String name, String location, String logo, String image, String id, String tag) {
+
+    public Model_Studios(String id, String location, String name, String image, String logo, String tag, double lat, double lng) {
         this.id = id;
         this.location = location;
         this.name = name;
         this.image = image;
         this.logo = logo;
         this.tag = tag;
-
-
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public String getId() {
@@ -71,5 +74,21 @@ public class Model_Studios {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }

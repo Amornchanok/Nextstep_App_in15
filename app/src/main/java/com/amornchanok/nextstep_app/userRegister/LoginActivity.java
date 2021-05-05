@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amornchanok.nextstep_app.MyApplication;
 import com.amornchanok.nextstep_app.R;
 import com.amornchanok.nextstep_app.userBottomNavigation.UserProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,18 +38,25 @@ public class LoginActivity extends AppCompatActivity {
     // private SignInButton signInButton;
     private TextView btnSignup, btnReset;
 
+    public static String IS_ANOTHER_WAY = "IS_ANOTHER_WAY";
+    public static Integer CODE_LOGIN = 1000;
+    public  Boolean isAnotherWay = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if (getIntent().hasExtra(IS_ANOTHER_WAY)){
+            isAnotherWay = getIntent().getBooleanExtra(IS_ANOTHER_WAY, false);
+        }
+
 
 
         inputEmail = (EditText) findViewById(R.id.input_email);
         inputPassword = (EditText) findViewById(R.id.input_password);
-
-        // btnSignup = (TextView) findViewById(R.id.btn_signup);
+        btnSignup = (TextView) findViewById(R.id.btnSignup);
         //btnReset = (TextView) findViewById(R.id.btn_reset_password);
 
         btnLogin = (Button) findViewById(R.id.btn_login);
@@ -100,20 +108,28 @@ public class LoginActivity extends AppCompatActivity {
                                     DatabaseReference DatabaseRefe = FirebaseDatabase.getInstance().getReference().child("Users");
                                     databaseReference = DatabaseRefe.child(auth.getCurrentUser().getUid());
                                     databaseReference.child("password").setValue(password);
-                                    Intent intent = new Intent(LoginActivity.this, UserProfileActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    MyApplication.userId = auth.getCurrentUser().getUid();
+
+                                    if (isAnotherWay){
+                                        setResult(RESULT_OK);
+                                        finish();
+                                    }else {
+                                        Intent intent = new Intent(LoginActivity.this, UserProfileActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
                                 }
                             }
                         });
             }
         });
-//            btnSignup.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    startActivity(new Intent(Page_firebase_login_1.this, Page_firebase_register_4.class));
-//                }
-//            });
+            btnSignup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(LoginActivity.this,UserRegisterActivity.class));
+                }
+            });
 //            btnReset.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
